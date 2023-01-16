@@ -3,7 +3,7 @@
 <h1 align="center">
   📅teacher-schedule-webapp💻
 </h1>
-🤖 Integrantes: 
+🤖 Members: 
 <ul>
 <li>Darwin Estiben Latorre Angulo</li>
 <li>Juan Manuel Ante Colina</li>
