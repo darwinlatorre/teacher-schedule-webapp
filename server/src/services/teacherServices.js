@@ -7,8 +7,9 @@ const getAllTeachers = () => {
     return allTeachers;
 };
 
-const getOneTeacher = () => {
-    return;
+const getOneTeacher = (teacherID) => {
+    const teacher = teacher.getOneTeacher(teacherID);
+    return teacher;
 };
 
 const createNewTeacher = (newTeacher) => {
@@ -22,12 +23,13 @@ const createNewTeacher = (newTeacher) => {
     return createdTeacher;
 };
 
-const updateTeacher = () => {
-    return;
+const updateTeacher = (teacherID, changes) => {
+    const updatedTeacher = teacher.updateTeacher(teacherID, changes);
+    return updatedTeacher;
 };
 
-const deleteTeacher = () => {
-    return;
+const deleteTeacher = (teacherID) => {
+    teacher.deleteOneTeacher(teacherID);
 };
 
 export default {getAllTeachers,

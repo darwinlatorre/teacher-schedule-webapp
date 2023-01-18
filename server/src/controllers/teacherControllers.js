@@ -7,8 +7,15 @@ const getAllTeachers = (req, res) => {
 };
 
 const getOneTeacher = (req, res) => {
-    const teacher = teacherService.getOneTeacher();
-    res.send(`Get teacher ${req.params.teacherID}`);
+    const {
+        params: {teacherID},
+    } = req;
+
+    if(!teacherID){
+        return;
+    }
+    const teacher = teacherService.getOneTeacher(teacherID);
+    res.send({status: 'OK', data: teacher });
 };
 
 const createNewTeacher = (req, res) => {
@@ -22,7 +29,12 @@ const createNewTeacher = (req, res) => {
         !body. user ||
         !body. password
     ) {
-        return;
+        res.status(400).send({
+            status: 'FAILED', 
+            data: { 
+                error: 'One of the keys are missing or is empty in request body',
+            },
+        });
     }
 
     const newTeacher = {
@@ -34,19 +46,70 @@ const createNewTeacher = (req, res) => {
         password: body. password,
     };
 
-    const createdTeacher = teacherService.createNewTeacher(newTeacher);
-    res.status(201).send({status: "OK", data: createdTeacher})
-    res.send(`Create teacher ${req.params.teacherID}`);
+    try {
+        const createdTeacher = teacherService.createNewTeacher(newTeacher);
+        res.status(201).send({status: "OK", data: createdTeacher})
+    } catch (error) {
+        res
+            .status(error?.status || 500)
+            .send({ status: 'FAILED', data: {
+                error: error?.message || error}
+            });
+    }
 };
 
 const updateTeacher = (req, res) => {
-    const updatedTeacher = teacherService.updateTeacher();
-    res.send(`Update teacher ${req.params.teacherID}`);
+    const {body,
+    params: { teacherID },
+    } = req;
+
+    if(!teacherID){
+        res.
+            status(400)
+            .send({
+                status: 'FAILED',
+                data: { error: "Parameter ':teacherID' can no be empty" },
+            });
+    }
+
+    try {
+        const updatedTeacher = teacherService.updateTeacher(teacherID, body);
+        res.send({status: 'OK', data: updatedTeacher });
+    } catch (error) {
+        res
+            .status(error?.status || 500)
+            .send({ status: 'FAILED', data: {
+                error: error?.message || error}
+            });
+    }
+
 };
 
 const deleteTeacher = (req, res) => {
-    const deletedTeacher = teacherService.deleteTeacher();
-    res.send(`Delete teacher ${req.params.teacherID}`);
+    const {
+        params: {teacherID},
+    } = req;
+
+    if(!teacherID){
+        res.status(400).send({
+            status: 'FAILED', 
+            data: { 
+                error: 'The teacher ID is incorrect',
+            },
+        });
+    }
+
+    try {
+        teacherService.deleteTeacher(teacherID);
+        res.status(204).send({ status: "OK" })
+    } catch (error) {
+        res
+            .status(error?.status || 500)
+            .send({ status: 'FAILED', data: {
+                error: error?.message || error}
+            });
+    }
+
 };
 
 export default {getAllTeachers,
