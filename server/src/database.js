@@ -8,8 +8,9 @@ const MONGODB_URL = process.env.MONGODB_URL;
 
 mongoose.set('strictQuery', true);
 mongoose.connect(MONGODB_URL, {
+    dbName: 'teacher-sched-db',
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
 })
     .then(db => console.log('Database is conected 📝'))
     .catch(err => console.log(err));

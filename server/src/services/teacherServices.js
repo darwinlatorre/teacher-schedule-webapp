@@ -1,40 +1,39 @@
-import teacher from '../database/teacher.js';
+import teacher from '../models/teacherModel.js';
 
-import { v4 as uuidv4 } from 'uuid';
-
-const getAllTeachers = () => {
-    const allTeachers = teacher.getAllTeachers();
+const getAllTeachers = async () => {
+    const allTeachers = teacher.find();
     return allTeachers;
 };
 
-const getOneTeacher = (teacherID) => {
-    const teacher = teacher.getOneTeacher(teacherID);
-    return teacher;
+const getOneTeacher = async (teacherID) => {
+    const foundTeacher = await teacher.findById(teacherID);
+    return foundTeacher;
 };
 
-const createNewTeacher = (newTeacher) => {
-    const teacherToInsert = {
-        ...newTeacher,
-        idUser: uuidv4(),
-        createAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
-        updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" })
-    }
-    const createdTeacher = teacher.createNewTeacher(teacherToInsert);
+const createNewTeacher = async (teacherToInsert) => {
+    const createdTeacher = new teacher (teacherToInsert);
+    await createdTeacher.save();
     return createdTeacher;
 };
 
-const updateTeacher = (teacherID, changes) => {
-    const updatedTeacher = teacher.updateTeacher(teacherID, changes);
+const updateTeacher = async (teacherID, changes) => {
+    const updatedTeacher = await teacher.findByIdAndUpdate(teacherID, changes);
     return updatedTeacher;
 };
 
-const deleteTeacher = (teacherID) => {
-    teacher.deleteOneTeacher(teacherID);
+const updatedTeacherCondition = async (teacherID, condition) => {
+    const updatedTeacherCondition = teacher.findByIdAndUpdate(teacherID, { estado: condition });
+    return updatedTeacherCondition;
+}
+
+const deleteTeacher = async (teacherID) => {
+    await teacher.findByIdAndDelete(teacherID)
 };
 
 export default {getAllTeachers,
     getOneTeacher,
     createNewTeacher,
     updateTeacher,
+    updatedTeacherCondition,
     deleteTeacher
 };
