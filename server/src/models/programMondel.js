@@ -5,10 +5,11 @@ const programSchema = new Schema({
         type: Number,
         require: true
     },
-    nombreProtrama:{
+    nombrePrograma:{
         type: String,
         require: true
     },
+
     //TODO: DEPENDE de la clase de competencias
     competencias:{
         type: Array,
@@ -18,4 +19,4 @@ const programSchema = new Schema({
     timestamps: true
 });
 
-export default model('programs', programSchemaSchema);
+export default model('programs', programSchema);
