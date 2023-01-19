@@ -1,8 +1,10 @@
 import { Schema, model } from 'mongoose';
 
-const programSchema = new Schema({
+const enviromentSchema = new Schema({
+
+    //TODO: Falta hacer el patron en donde se el id sea (AA001)
     idAmbiente:{
-        type: Number,
+        type: String,
         require: true
     },
     nombre:{
@@ -28,11 +30,11 @@ const programSchema = new Schema({
     
     //TODO: DEPENDE de la clase schedule
     horario:{
-        type: Array,
-        requier: true
+        type: String,
+        //requier: true
     },
 }, {
     timestamps: true
 });
 
-export default model('programs', programSchemaSchema);
+export default model('programs', enviromentSchema);

@@ -7,8 +7,9 @@ const router = express.Router();
 router.route('/')
     .get(teacherController.getAllTeachers)
     .post(teacherController.createNewTeacher);
-
-router.route('/:teacherID')
+    
+// Use ?condition = Activate||Inactivate if at the update route to modify the status atribute
+router.route('/:teacherID') 
     .get(teacherController.getOneTeacher)
     .patch(teacherController.updateTeacher)
     .delete(teacherController.deleteTeacher);

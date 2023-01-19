@@ -1,7 +1,7 @@
 import teacher from '../models/teacherModel.js';
 
 const getAllTeachers = async () => {
-    const allTeachers = teacher.find();
+    const allTeachers = await teacher.find();
     return allTeachers;
 };
 

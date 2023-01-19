@@ -1,5 +1,5 @@
 
-import teacherService from '../services/teacherServices.js';
+import teacherService from '../services/teacherService.js';
 //import { createsNewTeacher } from '../helpers/createObjetHelper.js';
 
 const getAllTeachers = async (req, res) => {
@@ -65,6 +65,15 @@ const updateTeacher = async (req, res) => {
         query: { condition },
     } = req; 
     
+    console.log(condition);
+
+    if(condition == 'Activo' || condition == 'Inactivo'){
+        const updatedTeacherCondition = await teacherService.updatedTeacherCondition(teacherID, condition);
+        res.send({status: 'OK', data: updatedTeacherCondition})
+        return;
+    }
+
+    
     if(body.tipoDocente !== "Tecnico" && 
     body.tipoDocente !== "Profesional" || 
     body.tipoContrato !== "Planta" && 
@@ -72,17 +81,11 @@ const updateTeacher = async (req, res) => {
 
     res.status(400).send({
         status: 'FAILED', 
-        data: { 
-            error: 'One of the keys this keys {tipoDocente, tipoContrato} are wrong'
-        }
-    });
+            data: { 
+                error: 'One of the keys this keys {tipoDocente, tipoContrato} are wrong'
+            }
+        });
     return;
-}
-
-    if(condition == 'activo' || condition == 'inactivo' || condition == 'Activo' || condition == 'Inactivo'){
-        const updatedTeacherCondition = await teacherService.updatedTeacherCondition(teacherID, condition);
-        res.send({status: 'OK', data: updatedTeacherCondition})
-        return;
     }
     
     const newTeacher = { 
