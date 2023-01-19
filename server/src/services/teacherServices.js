@@ -17,12 +17,12 @@ const createNewTeacher = async (teacherToInsert) => {
 };
 
 const updateTeacher = async (teacherID, changes) => {
-    const updatedTeacher = await teacher.findByIdAndUpdate(teacherID, changes);
+    const updatedTeacher = await teacher.findByIdAndUpdate(teacherID, changes, {new: true});
     return updatedTeacher;
 };
 
 const updatedTeacherCondition = async (teacherID, condition) => {
-    const updatedTeacherCondition = teacher.findByIdAndUpdate(teacherID, { estado: condition });
+    const updatedTeacherCondition = await teacher.findByIdAndUpdate(teacherID, { estado: condition }, {new: true});
     return updatedTeacherCondition;
 }
 

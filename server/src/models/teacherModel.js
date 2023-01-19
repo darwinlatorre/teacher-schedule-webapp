@@ -18,6 +18,7 @@ const teacherSchema = new Schema({
         type: String,
         require: true
     },
+    //TODO: VERIFICAR USUARIO
     user:{
         type: String,
         require: true

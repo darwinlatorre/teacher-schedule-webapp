@@ -1,5 +1,6 @@
 
-import teacherService from '../services/teacherServices.js'
+import teacherService from '../services/teacherServices.js';
+//import { createsNewTeacher } from '../helpers/createObjetHelper.js';
 
 const getAllTeachers = async (req, res) => {
     const allTeachers = await teacherService.getAllTeachers();
@@ -25,14 +26,13 @@ const createNewTeacher = async (req, res) => {
         res.status(400).send({
             status: 'FAILED', 
             data: { 
-                error: 'One of the keys are missing or is empty in request body' 
+                error: 'One of the keys this keys {tipoDocente, tipoContrato} are wrong'
             }
         });
         return;
     }
-    
     const newTeacher = { 
-        idDocente: body.identificacionUsuario, 
+        idDocente: body.idDocente, 
         nombres: body.nombres, 
         apellidos: body.apellidos,
         tipoIdentificacion: body.tipoIdentificacion, 
@@ -43,12 +43,12 @@ const createNewTeacher = async (req, res) => {
         area: body.area, 
         assgHorariaSemanal: 0, 
         horasMaxDia: 0, 
-        estado: body.estado
+        estado: 'activo'
     }
     
     try {
         const createdTeacher = await teacherService.createNewTeacher(newTeacher);
-        res.status(201).send({status: "OK", data: createdTeacher})
+        res.status(201).send({status: "OK", data: createdTeacher});
     } catch (error) {
         res
             .status(error?.status || 500)
@@ -64,13 +64,27 @@ const updateTeacher = async (req, res) => {
         params: { teacherID },
         query: { condition },
     } = req; 
+    
+    if(body.tipoDocente !== "Tecnico" && 
+    body.tipoDocente !== "Profesional" || 
+    body.tipoContrato !== "Planta" && 
+    body.tipoContrato !== "Contratista"){
 
-    if(condition === 'activo' || condition === 'inactivo'){
+    res.status(400).send({
+        status: 'FAILED', 
+        data: { 
+            error: 'One of the keys this keys {tipoDocente, tipoContrato} are wrong'
+        }
+    });
+    return;
+}
+
+    if(condition == 'activo' || condition == 'inactivo' || condition == 'Activo' || condition == 'Inactivo'){
         const updatedTeacherCondition = await teacherService.updatedTeacherCondition(teacherID, condition);
         res.send({status: 'OK', data: updatedTeacherCondition})
         return;
     }
-
+    
     const newTeacher = { 
         idDocente: body.idDocente, 
         nombres: body.nombres, 
@@ -84,8 +98,7 @@ const updateTeacher = async (req, res) => {
         assgHorariaSemanal: body.assgHorariaSemanal, 
         horasMaxDia: body.horasMaxDia, 
         estado: body.estado
-    }
-
+    };
 
     try {
         const updatedTeacher = await teacherService.updateTeacher(teacherID, newTeacher);
@@ -117,6 +130,8 @@ const deleteTeacher = (req, res) => {
     }
 
 };
+
+
 
 export default {
     getAllTeachers,
