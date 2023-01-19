@@ -1,16 +1,16 @@
 import express from 'express';
-/* import competenciaController from '../controllers/competenciaController'; */
+import competenciaController from '../controllers/competenciaController.js';
 
 
 const router = express.Router();
 
-/* router.route('/')
+router.route('/')
     .get(competenciaController.getAllCompetencias)
     .post(competenciaController.createNewCompetencia);
 
 router.route('/:competenciaID')
     .get(competenciaController.getOneCompetencia)
     .patch(competenciaController.updateCompetencia)
-    .delete(competenciaController.inactivateCompetencia); */
+    .delete(competenciaController.deleteCompetencia);
 
 export default router;

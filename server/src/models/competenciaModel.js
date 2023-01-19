@@ -5,12 +5,7 @@ const competenciaSchema = new Schema({
         type: String,
         require: true
     },
-    
-    //TODO: DEPENDE de programas
-    idPrograma:{
-        type: Number,
-        require: true
-    },
+    //Si la competencia es genérica o específica.
     tipo:{
         type: String,
         require: true
@@ -23,7 +18,8 @@ const competenciaSchema = new Schema({
         type: String,
         require: true
     },
-    programa:{
+    //TODO: DEPENDE de programas
+    idPrograma:{
         type: String,
         require: true
     },
