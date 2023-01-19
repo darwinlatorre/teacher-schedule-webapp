@@ -64,8 +64,6 @@ const updateTeacher = async (req, res) => {
         params: { teacherID },
         query: { condition },
     } = req; 
-    
-    console.log(condition);
 
     if(condition == 'Activo' || condition == 'Inactivo'){
         const updatedTeacherCondition = await teacherService.updatedTeacherCondition(teacherID, condition);
