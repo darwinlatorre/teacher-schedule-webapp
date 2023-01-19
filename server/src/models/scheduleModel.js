@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const scheduleSchema = new Schema({
     idHorario:{
-        type: String,
+        type: Number,
         require: true
     },
 
@@ -35,7 +35,7 @@ const scheduleSchema = new Schema({
         require: true
     },
     Dia:{
-        type: String,
+        type: Date,
         require: true
     },
     HoraInicio:{

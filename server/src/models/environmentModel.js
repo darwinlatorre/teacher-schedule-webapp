@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 
 const programSchema = new Schema({
     idAmbiente:{
-        type: String,
+        type: Number,
         require: true
     },
     nombre:{

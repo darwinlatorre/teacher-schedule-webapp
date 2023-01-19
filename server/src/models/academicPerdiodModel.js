@@ -5,7 +5,7 @@ const academicPeriodSchema = new Schema({
     //TODO: No se que tan necesario sea.
     //EVALUAR
     idPeriodoAcademico:{
-        type: String,
+        type: Number,
         require: true
     },
 

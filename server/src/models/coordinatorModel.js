@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 
 const coordinatorSchema = new Schema({
     idCoordinador:{
-        type: String,
+        type: Number,
         require: true
     },
     nombres:{
