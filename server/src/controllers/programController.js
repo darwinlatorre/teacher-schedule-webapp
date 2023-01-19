@@ -38,17 +38,9 @@ const createNewProgram = async (req, res) => {
 
 const updateProgram = async (req, res) => {
     const { body , 
-        params: { programID },
-        query: { condition },
+        params: { programID }
     } = req; 
     
-
-    if(condition == 'Activo' || condition == 'Inactivo'){
-        const updatedProgramCondition = await programService.updateProgramCodition(programID, condition);
-        res.send({status: 'OK', data: updatedProgramCondition})
-        return;
-    }
-
     
     const newProgram = { 
         idPrograma: body.idPrograma, 

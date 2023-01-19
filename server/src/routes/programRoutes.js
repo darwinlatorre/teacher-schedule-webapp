@@ -8,7 +8,6 @@ router.route('/')
     .get(programController.getAllPrograms)
     .post(programController.createNewProgram);
 
-// Use ?condition = Activate||Inactivate if at the update route to modify the status atribute
 router.route('/:programID')
     .get(programController.getOneProgram)
     .patch(programController.updateProgram)
