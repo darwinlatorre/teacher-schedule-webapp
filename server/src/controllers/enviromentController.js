@@ -57,7 +57,6 @@ const updateEnviroment = async (req, res) => {
         query: { condition },
     } = req; 
     
-    console.log(condition);
     if(condition == 'Activo' || condition == 'Inactivo'){
         const updatedEnviromentCondition = await enviromentService.updatedEnviromentCondition(enviromentID, condition);
         res.send({status: 'OK', data: updatedEnviromentCondition})

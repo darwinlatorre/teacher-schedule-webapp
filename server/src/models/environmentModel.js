@@ -34,7 +34,7 @@ const enviromentSchema = new Schema({
         //requier: true
     },
 }, {
-    timestamps: true
+    timestamps: true,
 });
 
-export default model('programs', enviromentSchema);
+export default model('enviromets', enviromentSchema);
