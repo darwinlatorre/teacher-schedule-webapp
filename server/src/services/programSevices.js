@@ -1,4 +1,4 @@
-import program from '../models/programMondel.js'
+import program from '../models/programModel.js'
 
 const getAllPrograms = async () => {
     const allProgram = await program.find();
