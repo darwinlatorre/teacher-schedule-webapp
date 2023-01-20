@@ -30,20 +30,20 @@ const scheduleSchema = new Schema({
         require: true
     },
 
-    Horas:{
+    horas:{
         type: Number,
         require: true
     },
-    Dia:{
+    dia:{
         type: Date,
         require: true
     },
-    HoraInicio:{
-        type: Date,
+    horaInicio:{
+        type: String,
         require: true
     },
-    HoraFinal:{
-        type: Date,
+    horaFinal:{
+        type: String,
         require: true
     }
 }, {

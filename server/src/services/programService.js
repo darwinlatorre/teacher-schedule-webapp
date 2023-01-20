@@ -1,4 +1,4 @@
-import program from '../models/programMondel.js'
+import program from '../models/programModel.js'
 
 const getAllPrograms = async () => {
     const allProgram = await program.find();
@@ -17,15 +17,18 @@ const updateProgram = async (programID, changes) => {
     const updatedProgram = await program.findByIdAndUpdate(programID, changes, {new: true});
     return updatedProgram;
 };
-
 const deleteProgram = async (programID) => {
     await program.findByIdAndDelete(programID)
 };
+const numberProgram = async () => {
+    return await competencia.countDocuments({});
+}
 
 export default {
     getAllPrograms,
     getOneProgram,
     createNewProgram,
     updateProgram,
-    deleteProgram
+    deleteProgram,
+    numberProgram
 };

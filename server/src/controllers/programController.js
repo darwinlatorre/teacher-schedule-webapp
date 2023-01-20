@@ -1,5 +1,5 @@
-import programService from '../services/programSevices.js';
-//import { createsNewTeacher } from '../helpers/createObjetHelper.js';
+import programService from '../services/programService.js';
+import { checkCompetencias } from '../controllers/competenciaController.js';
 
 const getAllPrograms = async (req, res) => {
     const allPrograms = await programService.getAllPrograms();
@@ -17,10 +17,30 @@ const getOneProgram = async (req, res) => {
 const createNewProgram = async (req, res) => {
     const { body } = req;
 
+     if( !Array.isArray(body.competencias) ){
+        res.status(400).send({
+            status: 'FAILED', 
+                data: { 
+                    error: 'Verificar, el objeto body.competencias no es de tipo Array'
+                }
+            });
+        return;
+    }
+
+    if ( !await checkCompetencias(body.competencias) ){
+        res.status(400).send({
+            status: 'FAILED', 
+                data: { 
+                    error: 'Uno de los IDs ingresados no existe'
+                }
+            });
+        return;
+    }
+
     const newProgram = { 
         idPrograma: body.idPrograma, 
         nombrePrograma: body.nombrePrograma, 
-        competencias: 'null',
+        competencias: body.competencias,
     }
     
     try {
@@ -33,7 +53,6 @@ const createNewProgram = async (req, res) => {
                 error: error?.message || error}
             });
     }
-
 };
 
 const updateProgram = async (req, res) => {
@@ -41,11 +60,30 @@ const updateProgram = async (req, res) => {
         params: { programID }
     } = req; 
     
+    if( !Array.isArray(body.competencias) ){
+        res.status(400).send({
+            status: 'FAILED', 
+                data: { 
+                    error: 'Verificar, el objeto a actualizar competencias no es de tipo Array'
+                }
+            });
+        return;
+    }
+
+    if ( !await checkCompetencias(body.competencias) ){
+        res.status(400).send({
+            status: 'FAILED', 
+                data: { 
+                    error: 'Uno de los IDs ingresados  a actualizar no existe'
+                }
+            });
+        return;
+    }
     
     const newProgram = { 
         idPrograma: body.idPrograma, 
-        nombrePrograma: body.nombrePrograma, 
-        competencias: 'null',
+        nombrePrograma: body.nombrePrograma,
+        competencias: body.competencias,
     }
 
     try {
@@ -79,11 +117,15 @@ const deleteProgram = (req, res) => {
 
 };
 
+export const numberProgram = async () => {
+    return await competenciaService.numberProgram();
+};
 
 export default {
     getAllPrograms,
     getOneProgram,
     createNewProgram,
     updateProgram,
-    deleteProgram
+    deleteProgram,
+    numberProgram
 };
