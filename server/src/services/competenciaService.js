@@ -30,10 +30,22 @@ const deleteCompetencia = async (competenciaID) => {
     await competencia.findByIdAndDelete(competenciaID)
 };
 
+const checkCompetencias = async (competenciaIDs) => {
+    try {
+        await competencia.find({ '_id': {$in: competenciaIDs}})
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+
+
 export default {getAllCompetencias,
     getOneCompetencia,
     createNewCompetencia,
     updateCompetencia,
     updatedCompetenciaCondition,
-    deleteCompetencia
+    deleteCompetencia,
+    checkCompetencias,
 };

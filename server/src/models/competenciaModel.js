@@ -5,7 +5,6 @@ const competenciaSchema = new Schema({
         type: String,
         require: true
     },
-    //Si la competencia es genérica o específica.
     tipo:{
         type: String,
         require: true

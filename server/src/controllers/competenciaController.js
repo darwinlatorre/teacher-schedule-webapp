@@ -1,5 +1,5 @@
 import competenciaService from '../services/competenciaService.js';
-//import { createsNewCompetencia } from '../helpers/createObjetHelper.js';
+import { numberProgram } from './programController.js';
 
 const getAllCompetencias = async (req, res) => {
     const allCompetencias = await competenciaService.getAllCompetencias();
@@ -16,6 +16,16 @@ const getOneCompetencia = async (req, res) => {
 
 const createNewCompetencia = async (req, res) => {
     const { body } = req;
+
+    if ( await numberProgram === 0 ){
+        res.status(400).send({
+            status: 'FAILED', 
+                data: { 
+                    error: 'No existe ningun programa hasta el momento'
+                }
+            });
+        return;
+    }
 
     if(body.tipo !== "Generica" && 
         body.tipo !== "Específica"){
@@ -114,10 +124,18 @@ const deleteCompetencia = (req, res) => {
 
 };
 
+export const checkCompetencias = async (competenciaIDs) => {
+    return await competenciaService.checkCompetencias(competenciaIDs);
+
+};
+
+
+
 export default {
     getAllCompetencias,
     getOneCompetencia,
     createNewCompetencia,
     updateCompetencia,
-    deleteCompetencia
+    deleteCompetencia,
+    checkCompetencias
 };
