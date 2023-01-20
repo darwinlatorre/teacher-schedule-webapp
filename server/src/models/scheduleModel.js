@@ -8,7 +8,7 @@ const scheduleSchema = new Schema({
 
     //TODO: DEPENDE del modelo de competencia
     idCompetencia:{
-        type: String,
+        type: Array,
         require: true
     },
 
