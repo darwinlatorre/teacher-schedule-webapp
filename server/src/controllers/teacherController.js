@@ -1,5 +1,4 @@
 import teacherService from '../services/teacherService.js';
-//import { createsNewTeacher } from '../helpers/createObjetHelper.js';
 
 const getAllTeachers = async (req, res) => {
     const allTeachers = await teacherService.getAllTeachers();

@@ -13,6 +13,7 @@ const app = express();
 
 // Settings
 app.set('port', process.env.PORT || 3000);
+
 // Middlewares
 // To se some requiest made to the server
 app.use(morgan('dev'))
