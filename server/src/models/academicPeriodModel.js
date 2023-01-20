@@ -2,14 +2,16 @@ import { Schema, model } from 'mongoose';
 
 const academicPeriodSchema = new Schema({
     
-    //TODO: No se que tan necesario sea.
-    //EVALUAR
     idPeriodoAcademico:{
-        type: Number,
+        type: String,
         require: true
     },
 
     nombre:{
+        type: String,
+        require: true
+    },
+    duracion:{
         type: String,
         require: true
     },
@@ -21,19 +23,20 @@ const academicPeriodSchema = new Schema({
         type: Date,
         require: true
     },
+
+    //TODO: DEPENDE del modelo horario
+    idHorario:{
+        type: String,
+        requiere: true
+    },
+
     estado:{
         type: String,
         require: true
     },
     
-    //TODO: DEPENDE del modelo horario
-    idHorario:{
-        type: string,
-        requiere: true
-    }
-
 }, {
     timestamps: true
 });
 
-export default model('AcademicPreiods', academicPeriodSchema);
+export default model('academicPeriods', academicPeriodSchema);
