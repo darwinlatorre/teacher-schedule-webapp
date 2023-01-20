@@ -17,7 +17,6 @@ const updateProgram = async (programID, changes) => {
     const updatedProgram = await program.findByIdAndUpdate(programID, changes, {new: true});
     return updatedProgram;
 };
-
 const deleteProgram = async (programID) => {
     await program.findByIdAndDelete(programID)
 };
