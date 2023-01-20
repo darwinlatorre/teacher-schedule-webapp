@@ -20,11 +20,15 @@ const updateProgram = async (programID, changes) => {
 const deleteProgram = async (programID) => {
     await program.findByIdAndDelete(programID)
 };
+const numberProgram = async () => {
+    return await competencia.countDocuments({});
+}
 
 export default {
     getAllPrograms,
     getOneProgram,
     createNewProgram,
     updateProgram,
-    deleteProgram
+    deleteProgram,
+    numberProgram
 };
