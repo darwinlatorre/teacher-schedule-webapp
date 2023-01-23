@@ -18,21 +18,18 @@ const createNewAcademicPeriod = async (req, res) => {
     const { body } = req;
 
     const newAcademicPeriod = { 
-        nombre: body.nombre, 
+        nombre: 'null', 
         duracion: body.duracion,
         fechaInicio: body.fechaInicio, 
         fechaFinal: body.fechaFinal, 
         idHorario: 'null',
         estado: 'activo'
     }
-
-
     
     try {
         newAcademicPeriod.idHorario = (await createNewSchedule(createNewAcademicPeriod._id))._id;
-
+        newAcademicPeriod.nombre = ("AP00"+ (await academicPeriodService.getNumberOfDocuments() + 1));
         const createdAcademicPeriod = await academicPeriodService.createNewAcademicPeriod(newAcademicPeriod);
-
         updateAcadPeriodToSchedule(newAcademicPeriod.idHorario, createdAcademicPeriod._id);
 
         res.status(201).send({status: "OK", data: createdAcademicPeriod});

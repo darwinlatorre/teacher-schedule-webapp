@@ -51,6 +51,12 @@ const addClassToSchedule = async (classID, scheduleID) => {
 const removeClassToSchedule = async (classID, scheduleID) => {
     await schedule.updateOne({'_id': mongoose.Types.ObjectId(scheduleID)}, { $pull: {listIdClasses: mongoose.Types.ObjectId(classID)}});
 }
+const getNumberOfDocuments = async () => {
+    const aCount = await schedule.countDocuments({}).then(count => {
+        return count;
+    });
+    return aCount
+};
 
 export default {getAllSchedules,
     getOneSchedule,
@@ -61,5 +67,6 @@ export default {getAllSchedules,
     updateAcadPeriodToSchedule,
     checkHorario,
     addClassToSchedule,
-    removeClassToSchedule
+    removeClassToSchedule,
+    getNumberOfDocuments
 };

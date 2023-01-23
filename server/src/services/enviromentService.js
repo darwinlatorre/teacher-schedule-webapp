@@ -34,6 +34,13 @@ const removeClassToEnvironment = async (classID, environmentID) => {
     await enviroment.updateOne({'_id': mongoose.Types.ObjectId(environmentID)}, { $pull: {listIdClasses: mongoose.Types.ObjectId(classID)}});
 }
 
+const getNumberOfDocuments = async () => {
+    const aCount = await enviroment.countDocuments({}).then(count => {
+        return count;
+    });
+    return aCount
+};
+
 export default {    
     getAllEnviroments,
     getOneEnviroment,
@@ -42,5 +49,6 @@ export default {
     updatedEnviromentCondition,
     deleteEnviroment,
     addClassToEnvironment, 
-    removeClassToEnvironment
+    removeClassToEnvironment,
+    getNumberOfDocuments
  }

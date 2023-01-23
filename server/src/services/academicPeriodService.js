@@ -24,10 +24,17 @@ const updateAcademicPeriod = async (academicPeriodID, changes) => {
 const updatedAcademicPeriodCondition = async (academicPeriodID, condition) => {
     const updatedAcademicPeriodCondition = await academicPeriod.findByIdAndUpdate(academicPeriodID, { estado: condition }, {new: true});
     return updatedAcademicPeriodCondition;
-}
+};
 
 const deleteAcademicPeriod = async (academicPeriodID) => {
     await academicPeriod.findByIdAndDelete(academicPeriodID)
+};
+
+const getNumberOfDocuments = async () => {
+    const aCount = await academicPeriod.countDocuments({}).then(count => {
+        return count;
+    });
+    return aCount
 };
 
 export default {getAllAcademicPeriods,
@@ -35,5 +42,6 @@ export default {getAllAcademicPeriods,
     createNewAcademicPeriod,
     updateAcademicPeriod,
     updatedAcademicPeriodCondition,
-    deleteAcademicPeriod
+    deleteAcademicPeriod,
+    getNumberOfDocuments
 };

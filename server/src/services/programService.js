@@ -20,6 +20,12 @@ const updateProgram = async (programID, changes) => {
 const deleteProgram = async (programID) => {
     await program.findByIdAndDelete(programID)
 };
+const getNumberOfDocuments = async () => {
+    const aCount = await program.countDocuments({}).then(count => {
+        return count;
+    });
+    return aCount
+};
 
 export default {
     getAllPrograms,
@@ -27,4 +33,5 @@ export default {
     createNewProgram,
     updateProgram,
     deleteProgram,
+    getNumberOfDocuments
 };

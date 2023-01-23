@@ -44,6 +44,7 @@ const createNewProgram = async (req, res) => {
     }
     
     try {
+        newProgram.idPrograma = ("P00"+ (await programService.getNumberOfDocuments() + 1));
         const createdProgram = await programService.createNewProgram(newProgram);
 
         await addProgramToCompetencias(body.competencias, createdProgram._id);

@@ -85,6 +85,7 @@ const updateEnviroment = async (req, res) => {
     }
 
     try {
+        newEnviroment.idAmbiente = ("AA00"+ (await enviromentService.getNumberOfDocuments() + 1));
         const updatedEnviroment = await enviromentService.updateEnviroment(enviromentID, newEnviroment);
         res.send({ status: 'OK', data: updatedEnviroment });
     } catch (error) {

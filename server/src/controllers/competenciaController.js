@@ -37,6 +37,7 @@ const createNewCompetencia = async (req, res) => {
     }
     
     try {
+        newCompetencia.idCompetencia = ("C00"+ (await competenciaService.getNumberOfDocuments() + 1));
         const createdCompetencia = await competenciaService.createNewCompetencia(newCompetencia);
         res.status(201).send({status: "OK", data: createdCompetencia});
     } catch (error) {

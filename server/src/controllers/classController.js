@@ -44,8 +44,8 @@ const createNewClass = async (req, res) => {
     try {
         const createdClass = await classService.createNewClass(newClass);
         addClassToSchedule(createdClass._id, body.idHorario);
-        addClassToTeacher(createdClass._id, body.idUsuario)
-        addClassToEnvironment(createdClass._id, body.idAmbiente)
+        addClassToTeacher(createdClass._id, body.idUsuario);
+        addClassToEnvironment(createdClass._id, body.idAmbiente);
         res.status(201).send({status: "OK", data: createdClass});
     } catch (error) {
         res

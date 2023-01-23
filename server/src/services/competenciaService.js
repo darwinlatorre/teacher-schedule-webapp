@@ -40,6 +40,13 @@ const checkCompetencias = async (competenciaIDs) => {
     }
 }
 
+const getNumberOfDocuments = async () => {
+    const aCount = await competencia.countDocuments({}).then(count => {
+        return count;
+    });
+    return aCount
+};
+
 export default {
     getAllCompetencias,
     getOneCompetencia,
@@ -48,4 +55,5 @@ export default {
     updatedCompetenciaCondition,
     deleteCompetencia,
     checkCompetencias,
+    getNumberOfDocuments,
 };

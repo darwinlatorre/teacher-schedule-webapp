@@ -20,6 +20,8 @@ export const createNewSchedule = async (idPeriodoAcademico) => {
         idPeriodoAcademico: idPeriodoAcademico, 
         listIdClasses: [], 
     }
+
+    newSchedule.idHorario = ("H00"+ (await scheduleService.getNumberOfDocuments() + 1));
     return await scheduleService.createNewSchedule(newSchedule);
 
 };
