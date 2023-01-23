@@ -14,7 +14,6 @@ const classSchema = new Schema({
         type: String,
         require: true
     },
-    //TODO: DEPENDE del modelo ambiente
     idAmbiente:{
         type: String,
         require: true
