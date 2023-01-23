@@ -9,6 +9,7 @@ const events = [
 
 function DemoApp() {
   return (
+    /*
     <div>
       <h1>Teacher Schedule</h1>
       <FullCalendar
@@ -19,7 +20,39 @@ function DemoApp() {
         eventContent={renderEventContent}
       />
     </div>
-  )
+    */
+  
+      <FullCalendar
+        plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
+        initialView="timeGridWeek"
+        headerToolbar={{
+          left: "prev,next today",
+          center: "title",
+          right: "dayGridMonth,timeGridWeek,timeGridDay",
+        }}
+        locale="es-co"
+        //weekends={weekends.weekendsVisible}
+        //select={handleAddEventSelectAndOpenModal}
+        //eventClick={handleEditEventSelectAndOpenModal}
+        //eventChange={handleUpdateEventSelect}
+        //initialEvents={eventsCalendar}
+        longPressDelay={1000}
+        eventLongPressDelay={1000}
+        selectLongPressDelay={1000}
+        selectable={true}
+        dayMaxEvents={true}
+        allDaySlot={false}
+        editable={true}
+        height="700px"
+        buttonText={{
+          today: "Hoy",
+          month: "Mes",
+          week: "Semana",
+          day: "Dia",
+          list: "Lista",
+        }}
+      />
+    );
 }
 
 // a custom render function
