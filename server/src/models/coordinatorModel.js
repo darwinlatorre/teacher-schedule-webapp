@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import bcrypt from 'bcryptjs';
 
 const coordinatorSchema = new Schema({
     idCoordinador:{
@@ -26,21 +25,10 @@ const coordinatorSchema = new Schema({
         type: String,
         require: true
     },
-    academicProgram:{
-        type: String,
-        require: true
-    }
 }, {
     timestamps: true
 })
 
-coordinatorSchema.method.encrypPassword = async password => {
-    const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(password, salt);
-};
 
-coordinatorSchema.method.matchPassword = async function(password) {
-    return await bcrypt.compare(password, this.password);
-}
 
 export default model('coordinators', coordinatorSchema);
