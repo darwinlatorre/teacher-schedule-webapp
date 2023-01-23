@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import enviroment from '../models/environmentModel.js'
 
 const getAllEnviroments = async () => {
@@ -25,10 +26,21 @@ const deleteEnviroment = async (enviromentID) => {
     await enviroment.findByIdAndDelete(enviromentID)
 };
 
+const addClassToEnvironmente = async (classID, environmentID) => {
+    await enviroment.updateOne({_id: environmentID}, { $push: {listIdClasses: classID}})
+}
+
+const removeClassToEnvironment = async (classID, environmentID) => {
+    await enviroment.updateOne({'_id': mongoose.Types.ObjectId(environmentID)}, { $pull: {listIdClasses: mongoose.Types.ObjectId(classID)}});
+}
+
 export default {    
     getAllEnviroments,
     getOneEnviroment,
     createNewEnviroment,
     updateEnviroment,
     updatedEnviromentCondition,
-    deleteEnviroment }
+    deleteEnviroment,
+    addClassToEnvironmente, 
+    removeClassToEnvironment
+ }

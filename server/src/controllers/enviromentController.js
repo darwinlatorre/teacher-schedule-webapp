@@ -113,11 +113,20 @@ const deleteEnviroment = (req, res) => {
     }
 };
 
+export const addClassToEnvironmente = async (classID, environmentID) => {
+    return await enviromentService.addClassToEnvironmente(classID, environmentID);
+}
+
+export const removeClassToEnvironment = async (classID, environmentID) => {
+    return await enviromentService.removeClassToEnvironment(classID, environmentID);
+}
 
 export default {
     getAllEnviroments,
     getOneEnviroment,
     createNewEnviroment,
     updateEnviroment,
-    deleteEnviroment
+    deleteEnviroment,
+    addClassToEnvironmente, 
+    removeClassToEnvironment
 };

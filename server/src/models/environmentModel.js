@@ -29,8 +29,8 @@ const enviromentSchema = new Schema({
     },
     
     //TODO: DEPENDE de la clase schedule
-    horario:{
-        type: String,
+    listIdClasses:{
+        type: Array,
         //requier: true
     },
 }, {

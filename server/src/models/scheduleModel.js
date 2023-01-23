@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 
 const scheduleSchema = new Schema({
     idHorario:{
-        type: Number,
+        type: String,
         require: true
     },
     //TODO: DEPENDE del modelo de periodo academico
