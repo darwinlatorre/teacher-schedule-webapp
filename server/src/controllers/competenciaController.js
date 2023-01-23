@@ -17,16 +17,6 @@ const getOneCompetencia = async (req, res) => {
 const createNewCompetencia = async (req, res) => {
     const { body } = req;
 
-    if ( await numberProgram === 0 ){
-        res.status(400).send({
-            status: 'FAILED', 
-                data: { 
-                    error: 'No existe ningun programa hasta el momento'
-                }
-            });
-        return;
-    }
-
     if(body.tipo !== "Generica" && 
         body.tipo !== "Específica"){
 
@@ -90,7 +80,7 @@ const updateCompetencia = async (req, res) => {
         tipo: body.tipo, 
         nombre: body.nombre, 
         estado: 'activo', 
-        idPrograma: 'null'
+        idPrograma: body.idPrograma
     }
 
     try {
@@ -126,9 +116,11 @@ const deleteCompetencia = (req, res) => {
 
 export const checkCompetencias = async (competenciaIDs) => {
     return await competenciaService.checkCompetencias(competenciaIDs);
-
 };
 
+export const addProgramToCompetencias = async (competenciaIDs, program) => {
+    return await competenciaService.addProgramToCompetencias(competenciaIDs, program);
+};
 
 
 export default {

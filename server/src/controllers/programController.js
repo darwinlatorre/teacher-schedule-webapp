@@ -1,5 +1,5 @@
 import programService from '../services/programService.js';
-import { checkCompetencias } from '../controllers/competenciaController.js';
+import { checkCompetencias, addProgramToCompetencias } from '../controllers/competenciaController.js';
 
 const getAllPrograms = async (req, res) => {
     const allPrograms = await programService.getAllPrograms();
@@ -45,6 +45,9 @@ const createNewProgram = async (req, res) => {
     
     try {
         const createdProgram = await programService.createNewProgram(newProgram);
+
+        await addProgramToCompetencias(body.competencias, createdProgram._id);
+
         res.status(201).send({status: "OK", data: createdProgram});
     } catch (error) {
         res
@@ -74,7 +77,7 @@ const updateProgram = async (req, res) => {
         res.status(400).send({
             status: 'FAILED', 
                 data: { 
-                    error: 'Uno de los IDs ingresados  a actualizar no existe'
+                    error: 'Uno de los IDs ingresados a actualizar no existe'
                 }
             });
         return;
@@ -88,6 +91,9 @@ const updateProgram = async (req, res) => {
 
     try {
         const updatedProgram = await programService.updateProgram(programID, newProgram);
+
+        await addProgramToCompetencias(body.competencias, createdProgram._id);
+        
         res.send({status: 'OK', data: updatedProgram });
     } catch (error) {
         res

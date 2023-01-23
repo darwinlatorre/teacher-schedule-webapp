@@ -17,7 +17,6 @@ const competenciaSchema = new Schema({
         type: String,
         require: true
     },
-    //TODO: DEPENDE de programas
     idPrograma:{
         type: String,
         require: true
