@@ -1,3 +1,4 @@
+import mongoose, { Mongoose, set } from 'mongoose';
 import competencia from '../models/competenciaModel.js';
 
 const getAllCompetencias = async () => {
@@ -39,6 +40,19 @@ const checkCompetencias = async (competenciaIDs) => {
     }
 }
 
+const addProgramToCompetencias = async (competenciaIDs, program) => {
+    for (var i = 0; i < competenciaIDs.length; i++) {
+        await competencia.findByIdAndUpdate(competenciaIDs[i], {idPrograma: program})
+    }
+}
+
+const deleteProgramToCompetencias = async (competenciaIDs, program) => {
+    for (var i = 0; i < competenciaIDs.length; i++) {
+        await competencia.findByIdAndDelete(competenciaIDs[i], {idPrograma: 'null'})
+    }
+}
+
+
 
 
 export default {getAllCompetencias,
@@ -48,4 +62,5 @@ export default {getAllCompetencias,
     updatedCompetenciaCondition,
     deleteCompetencia,
     checkCompetencias,
+    addProgramToCompetencias
 };

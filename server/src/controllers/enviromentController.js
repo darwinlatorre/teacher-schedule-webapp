@@ -1,6 +1,5 @@
 
 import enviromentService from '../services/enviromentService.js';
-//import { createsNewTeacher } from '../helpers/createObjetHelper.js';
 
 const getAllEnviroments = async (req, res) => {
     const allEnviroment = await enviromentService.getAllEnviroments();
