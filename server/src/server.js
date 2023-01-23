@@ -7,6 +7,7 @@ import AcademicPeriodRoutes from './routes/academicPeriodRoutes.js';
 import ProgramRoutes from './routes/programRoutes.js';
 import ScheduleRoutes from './routes/scheduleRoutes.js';
 import CompetenciaRoutes from './routes/competenciaRoutes.js';
+import ClassesRoute from './routes/classesRoute.js';
 
 // // Initializations
 const app = express();
@@ -33,6 +34,7 @@ app.use('/api/academicPeriods', AcademicPeriodRoutes);
 app.use('/api/programs', ProgramRoutes);
 app.use('/api/schedule', ScheduleRoutes);
 app.use('/api/competencias', CompetenciaRoutes);
+app.use('/api/classes', ClassesRoute);
 
 // Static files
 
