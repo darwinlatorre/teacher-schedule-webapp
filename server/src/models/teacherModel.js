@@ -39,13 +39,10 @@ const teacherSchema = new Schema({
         type: String,
         require: true
     },
-
-    //TODO: DEPENDE del model de horario
-    idHorario:{
-        type: String,
+    listIdClasses:{
+        type: Array,
         require: true
     },
-
     assgHorariaSemanal:{
         type: Number,
     },

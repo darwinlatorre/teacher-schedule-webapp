@@ -1,5 +1,5 @@
 import programService from '../services/programService.js';
-import { checkCompetencias, addProgramToCompetencias } from '../controllers/competenciaController.js';
+import { checkCompetencias, addProgramToCompetencias, deleteProgramToCompetencias } from '../controllers/competenciaController.js';
 
 const getAllPrograms = async (req, res) => {
     const allPrograms = await programService.getAllPrograms();
@@ -105,13 +105,14 @@ const updateProgram = async (req, res) => {
 
 };
 
-const deleteProgram = (req, res) => {
+const deleteProgram = async (req, res) => {
     const {
         params: {programID},
     } = req;
 
     try {
-        programService.deleteProgram(programID);
+        //await programService.deleteProgram(programID);
+        await deleteProgramToCompetencias(programID);
         res.status(204).send({ status: "OK" })
     } catch (error) {
         res
@@ -123,15 +124,11 @@ const deleteProgram = (req, res) => {
 
 };
 
-export const numberProgram = async () => {
-    return await competenciaService.numberProgram();
-};
 
 export default {
     getAllPrograms,
     getOneProgram,
     createNewProgram,
     updateProgram,
-    deleteProgram,
-    numberProgram
+    deleteProgram
 };

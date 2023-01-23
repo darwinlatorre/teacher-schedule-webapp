@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import schedule from '../models/scheduleModel.js';
 
 const getAllSchedules = async () => {
@@ -30,10 +31,30 @@ const deleteSchedule = async (scheduleID) => {
     await schedule.findByIdAndDelete(scheduleID)
 };
 
+const checkHorario = async (horarioID) => {
+    try {
+        await schedule.find({'_id': mongoose.Types.ObjectId(horarioID)});
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+const addClassToSchedule = async (classID, scheduleID) => {
+    await schedule.updateOne({_id: scheduleID}, { $push: {listIdClasses: classID}})
+}
+
+const removeClassToSchedule = async (classID, scheduleID) => {
+    await schedule.updateOne({'_id': mongoose.Types.ObjectId(scheduleID)}, { $pull: {listIdClasses: mongoose.Types.ObjectId(classID)}});
+}
+
 export default {getAllSchedules,
     getOneSchedule,
     createNewSchedule,
     updateSchedule,
     updatedScheduleCondition,
-    deleteSchedule
+    deleteSchedule,
+    checkHorario,
+    addClassToSchedule,
+    removeClassToSchedule
 };

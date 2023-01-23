@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 import teacher from '../models/teacherModel.js';
 
 const getAllTeachers = async () => {
@@ -30,10 +31,20 @@ const deleteTeacher = async (teacherID) => {
     await teacher.findByIdAndDelete(teacherID)
 };
 
+const addClassToTeacher = async (classID, teacherID) => {
+    await teacher.updateOne({_id: teacherID}, { $push: {listIdClasses: classID}})
+}
+
+const removeClassToTeacher = async (classID, teacherID) => {
+    await teacher.updateOne({'_id': mongoose.Types.ObjectId(teacherID)}, { $pull: {listIdClasses: mongoose.Types.ObjectId(classID)}});
+}
+
 export default {getAllTeachers,
     getOneTeacher,
     createNewTeacher,
     updateTeacher,
     updatedTeacherCondition,
-    deleteTeacher
+    deleteTeacher,
+    addClassToTeacher,
+    removeClassToTeacher
 };

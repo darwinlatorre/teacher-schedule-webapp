@@ -1,5 +1,4 @@
 import competenciaService from '../services/competenciaService.js';
-import { numberProgram } from './programController.js';
 
 const getAllCompetencias = async (req, res) => {
     const allCompetencias = await competenciaService.getAllCompetencias();
@@ -122,6 +121,9 @@ export const addProgramToCompetencias = async (competenciaIDs, program) => {
     return await competenciaService.addProgramToCompetencias(competenciaIDs, program);
 };
 
+export const deleteProgramToCompetencias = async (programID) => {
+    return await competenciaService.deleteProgramToCompetencias(programID);
+}
 
 export default {
     getAllCompetencias,

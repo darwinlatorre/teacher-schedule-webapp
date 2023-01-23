@@ -39,6 +39,7 @@ const createNewTeacher = async (req, res) => {
         tipoDocente: body.tipoDocente, 
         tipoContrato: body.tipoContrato, 
         area: body.area, 
+        listIdClasses: [],
         assgHorariaSemanal: 0, 
         horasMaxDia: 0, 
         estado: 'activo'
@@ -94,6 +95,7 @@ const updateTeacher = async (req, res) => {
         tipoDocente: body.tipoDocente, 
         tipoContrato: body.tipoContrato, 
         area: body.area, 
+        listIdClasses: body.listIdClasses, 
         assgHorariaSemanal: body.assgHorariaSemanal, 
         horasMaxDia: body.horasMaxDia, 
         estado: body.estado
@@ -130,12 +132,20 @@ const deleteTeacher = (req, res) => {
 
 };
 
+export const addClassToTeacher = async (classID, teacherID) => {
+    return await teacherService.addClassToTeacher(classID, teacherID);
+}
 
+export const removeClassToTeacher = async (classID, teacherID) => {
+    return await teacherService.removeClassToTeacher(classID, teacherID);
+}
 
 export default {
     getAllTeachers,
     getOneTeacher,
     createNewTeacher,
     updateTeacher,
-    deleteTeacher
+    deleteTeacher,
+    addClassToTeacher,
+    removeClassToTeacher
 };

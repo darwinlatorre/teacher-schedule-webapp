@@ -17,15 +17,9 @@ const createNewSchedule = async (req, res) => {
     const { body } = req;
 
     const newSchedule = { 
-        idHorario: body.idHorario, 
-        idCompetencia: "", 
+        idHorario: "", 
         idPeriodoAcademico: "", 
-        idAmbiente: "", 
-        idUsuario: "", 
-        horas: body.horas, 
-        dia: body.dia, 
-        horaInicio: body.horaInicio, 
-        horaFinal: body.horaFinal, 
+        listIdClasses: [], 
     }
     
     try {
@@ -47,15 +41,9 @@ const updateSchedule = async (req, res) => {
     } = req; 
 
     const newSchedule = { 
-        idHorario: body.idHorario, 
-        idCompetencia: body.idCompetencia, 
-        idPeriodoAcademico: body.idPeriodoAcademico, 
-        idAmbiente: body.idAmbiente, 
-        idUsuario: body.idUsuario, 
-        horas: body.horas, 
-        dia: body.dia, 
-        horaInicio: body.horaInicio, 
-        horaFinal: body.horaFinal, 
+        idHorario: "", 
+        idPeriodoAcademico: "", 
+        listIdClasses: "", 
     }
 
     try {
@@ -89,11 +77,27 @@ const deleteSchedule = (req, res) => {
 
 };
 
+export const checkHorario = async (horarioID) => {
+    return await scheduleService.checkHorario(horarioID);
+};
+
+export const addClassToSchedule = async (classID, horarioID) => {
+    return await scheduleService.addClassToSchedule(classID, horarioID);
+}
+
+export const removeClassToSchedule = async (classID, scheduleID) => {
+    return await scheduleService.removeClassToSchedule(classID, scheduleID);
+}
+
+
 
 export default {
     getAllSchedules,
     getOneSchedule,
     createNewSchedule,
     updateSchedule,
-    deleteSchedule
+    deleteSchedule,
+    checkHorario,
+    addClassToSchedule,
+    removeClassToSchedule
 };

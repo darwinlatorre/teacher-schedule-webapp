@@ -46,21 +46,22 @@ const addProgramToCompetencias = async (competenciaIDs, program) => {
     }
 }
 
-const deleteProgramToCompetencias = async (competenciaIDs, program) => {
-    for (var i = 0; i < competenciaIDs.length; i++) {
-        await competencia.findByIdAndDelete(competenciaIDs[i], {idPrograma: 'null'})
+const deleteProgramToCompetencias = async (programID) => {
+    const times = await competencia.countDocuments({idPrograma: programID})
+    for (let i = 0; i <= times-1; i++) {
+        await competencia.findOneAndUpdate({idPrograma : programID}, {idPrograma : 'null'})
     }
 }
 
 
-
-
-export default {getAllCompetencias,
+export default {
+    getAllCompetencias,
     getOneCompetencia,
     createNewCompetencia,
     updateCompetencia,
     updatedCompetenciaCondition,
     deleteCompetencia,
     checkCompetencias,
-    addProgramToCompetencias
+    addProgramToCompetencias,
+    deleteProgramToCompetencias
 };
