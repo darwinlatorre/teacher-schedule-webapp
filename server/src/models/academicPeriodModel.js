@@ -1,12 +1,6 @@
 import { Schema, model } from 'mongoose';
 
 const academicPeriodSchema = new Schema({
-    
-    idPeriodoAcademico:{
-        type: String,
-        require: true
-    },
-
     nombre:{
         type: String,
         require: true
@@ -23,13 +17,10 @@ const academicPeriodSchema = new Schema({
         type: Date,
         require: true
     },
-
-    //TODO: DEPENDE del modelo horario
     idHorario:{
         type: String,
         requiere: true
     },
-
     estado:{
         type: String,
         require: true

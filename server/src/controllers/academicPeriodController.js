@@ -1,4 +1,5 @@
 import academicPeriodService from '../services/academicPeriodService.js';
+import { createNewSchedule, updateAcadPeriodToSchedule } from './scheduleController.js'
 
 const getAllAcademicPeriods = async (req, res) => {
     const allAcademicPeriods = await academicPeriodService.getAllAcademicPeriods();
@@ -17,7 +18,6 @@ const createNewAcademicPeriod = async (req, res) => {
     const { body } = req;
 
     const newAcademicPeriod = { 
-        idPeriodoAcademico: body.idPeriodoAcademico, 
         nombre: body.nombre, 
         duracion: body.duracion,
         fechaInicio: body.fechaInicio, 
@@ -25,9 +25,16 @@ const createNewAcademicPeriod = async (req, res) => {
         idHorario: 'null',
         estado: 'activo'
     }
+
+
     
     try {
+        newAcademicPeriod.idHorario = (await createNewSchedule(createNewAcademicPeriod._id))._id;
+
         const createdAcademicPeriod = await academicPeriodService.createNewAcademicPeriod(newAcademicPeriod);
+
+        updateAcadPeriodToSchedule(newAcademicPeriod.idHorario, createdAcademicPeriod._id);
+
         res.status(201).send({status: "OK", data: createdAcademicPeriod});
     } catch (error) {
         res
@@ -52,12 +59,10 @@ const updateAcademicPeriod = async (req, res) => {
     }
     
     const newAcademicPeriod = { 
-        idPeriodoAcademico: body.idPeriodoAcademico, 
         nombre: body.nombre, 
         duracion: body.duracion,
         fechaInicio: body.fechaInicio, 
         fechaFinal: body.fechaFinal, 
-        idHorario: body.idHorario,
         estado: body.estado
     }
 
@@ -92,10 +97,11 @@ const deleteAcademicPeriod = (req, res) => {
 
 };
 
+
 export default {
     getAllAcademicPeriods,
     getOneAcademicPeriod,
     createNewAcademicPeriod,
     updateAcademicPeriod,
-    deleteAcademicPeriod
+    deleteAcademicPeriod,
 };

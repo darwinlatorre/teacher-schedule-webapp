@@ -1,7 +1,8 @@
 import classService from '../services/classService.js';
 import { checkHorario, addClassToSchedule, removeClassToSchedule } from './scheduleController.js';
 import { addClassToTeacher, removeClassToTeacher } from './teacherController.js';
-import { addClassToEnvironmente, removeClassToEnvironment } from './enviromentController.js';
+import { addClassToEnvironment, removeClassToEnvironment } from './enviromentController.js';
+import { checkCompetencias } from './competenciaController.js';
 
 const getAllClasses = async (req, res) => {
     const allClasss = await classService.getAllClasss();
@@ -44,7 +45,7 @@ const createNewClass = async (req, res) => {
         const createdClass = await classService.createNewClass(newClass);
         addClassToSchedule(createdClass._id, body.idHorario);
         addClassToTeacher(createdClass._id, body.idUsuario)
-        addClassToEnvironmente(createdClass._id, body.idAmbiente)
+        addClassToEnvironment(createdClass._id, body.idAmbiente)
         res.status(201).send({status: "OK", data: createdClass});
     } catch (error) {
         res

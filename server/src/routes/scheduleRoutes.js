@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.route('')
     .get(scheduleController.getAllSchedules)
-    .post(scheduleController.createNewSchedule);
 
 router.route('/:scheduleID')
     .get(scheduleController.getOneSchedule)

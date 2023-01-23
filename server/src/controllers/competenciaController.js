@@ -125,11 +125,13 @@ export const deleteProgramToCompetencias = async (programID) => {
     return await competenciaService.deleteProgramToCompetencias(programID);
 }
 
+
+
 export default {
     getAllCompetencias,
     getOneCompetencia,
     createNewCompetencia,
     updateCompetencia,
     deleteCompetencia,
-    checkCompetencias
+    checkCompetencias,
 };

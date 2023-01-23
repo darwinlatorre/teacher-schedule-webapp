@@ -13,25 +13,14 @@ const getOneSchedule = async (req, res) => {
     res.send({status: 'OK', data: schedule });
 };
 
-const createNewSchedule = async (req, res) => {
-    const { body } = req;
+export const createNewSchedule = async (idPeriodoAcademico) => {
 
     const newSchedule = { 
         idHorario: "", 
-        idPeriodoAcademico: "", 
+        idPeriodoAcademico: idPeriodoAcademico, 
         listIdClasses: [], 
     }
-    
-    try {
-        const createdSchedule = await scheduleService.createNewSchedule(newSchedule);
-        res.status(201).send({status: "OK", data: createdSchedule});
-    } catch (error) {
-        res
-            .status(error?.status || 500)
-            .send({ status: 'FAILED', data: {
-                error: error?.message || error}
-            });
-    }
+    return await scheduleService.createNewSchedule(newSchedule);
 
 };
 
@@ -41,9 +30,8 @@ const updateSchedule = async (req, res) => {
     } = req; 
 
     const newSchedule = { 
-        idHorario: "", 
-        idPeriodoAcademico: "", 
-        listIdClasses: "", 
+        idHorario: body.idHorario, 
+        idPeriodoAcademico: body.idPeriodoAcademico, 
     }
 
     try {
@@ -77,6 +65,10 @@ const deleteSchedule = (req, res) => {
 
 };
 
+export const updateAcadPeriodToSchedule = async (scheduleID, academicPeriodID) => {
+    await scheduleService.updateAcadPeriodToSchedule(scheduleID, academicPeriodID)
+}
+
 export const checkHorario = async (horarioID) => {
     return await scheduleService.checkHorario(horarioID);
 };
@@ -99,5 +91,6 @@ export default {
     deleteSchedule,
     checkHorario,
     addClassToSchedule,
-    removeClassToSchedule
+    removeClassToSchedule,
+    updateAcadPeriodToSchedule
 };

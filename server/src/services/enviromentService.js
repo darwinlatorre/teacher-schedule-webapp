@@ -26,7 +26,7 @@ const deleteEnviroment = async (enviromentID) => {
     await enviroment.findByIdAndDelete(enviromentID)
 };
 
-const addClassToEnvironmente = async (classID, environmentID) => {
+const addClassToEnvironment = async (classID, environmentID) => {
     await enviroment.updateOne({_id: environmentID}, { $push: {listIdClasses: classID}})
 }
 
@@ -41,6 +41,6 @@ export default {
     updateEnviroment,
     updatedEnviromentCondition,
     deleteEnviroment,
-    addClassToEnvironmente, 
+    addClassToEnvironment, 
     removeClassToEnvironment
  }

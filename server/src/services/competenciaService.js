@@ -40,20 +40,6 @@ const checkCompetencias = async (competenciaIDs) => {
     }
 }
 
-const addProgramToCompetencias = async (competenciaIDs, program) => {
-    for (var i = 0; i < competenciaIDs.length; i++) {
-        await competencia.findByIdAndUpdate(competenciaIDs[i], {idPrograma: program})
-    }
-}
-
-const deleteProgramToCompetencias = async (programID) => {
-    const times = await competencia.countDocuments({idPrograma: programID})
-    for (let i = 0; i <= times-1; i++) {
-        await competencia.findOneAndUpdate({idPrograma : programID}, {idPrograma : 'null'})
-    }
-}
-
-
 export default {
     getAllCompetencias,
     getOneCompetencia,
@@ -62,6 +48,4 @@ export default {
     updatedCompetenciaCondition,
     deleteCompetencia,
     checkCompetencias,
-    addProgramToCompetencias,
-    deleteProgramToCompetencias
 };

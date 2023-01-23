@@ -5,7 +5,6 @@ const classSchema = new Schema({
         type: String,
         require: true
     },
-    //TODO: DEPENDE del modelo de competencia
     idCompetencia:{
         type: String,
         require: true

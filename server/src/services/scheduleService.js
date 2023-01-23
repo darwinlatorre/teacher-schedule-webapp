@@ -31,6 +31,10 @@ const deleteSchedule = async (scheduleID) => {
     await schedule.findByIdAndDelete(scheduleID)
 };
 
+const updateAcadPeriodToSchedule = async (scheduleID, academicPeriodID) => {
+    await schedule.findByIdAndUpdate(mongoose.Types.ObjectId(scheduleID), {idPeriodoAcademico: academicPeriodID})
+}
+
 const checkHorario = async (horarioID) => {
     try {
         await schedule.find({'_id': mongoose.Types.ObjectId(horarioID)});
@@ -54,6 +58,7 @@ export default {getAllSchedules,
     updateSchedule,
     updatedScheduleCondition,
     deleteSchedule,
+    updateAcadPeriodToSchedule,
     checkHorario,
     addClassToSchedule,
     removeClassToSchedule
