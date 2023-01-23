@@ -1,23 +1,13 @@
-import './App.css';
-import Login from './login/login.js';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from "@fullcalendar/timegrid"
+import interactionPlugin from "@fullcalendar/interaction"
 
 const events = [
   { title: 'Meeting', start: new Date() }
 ]
 
-function App() {
-  return (
-    <div id="App">
-      <Login />
-    </div>
-  );
-}
-
-//export default App;
-
-export function DemoApp() {
+function DemoApp() {
   return (
     <div>
       <h1>Teacher Schedule</h1>
