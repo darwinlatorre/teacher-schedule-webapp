@@ -2,29 +2,32 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from "@fullcalendar/timegrid"
 import interactionPlugin from "@fullcalendar/interaction"
+import React from 'react'
 
 const events = [
   { title: 'Meeting', start: new Date() }
 ]
 
+/*
+const handleAddEventSelectAndOpenModal = (selectInfo: any) => {
+  setIsEditCard(false);
+  setEventInfos(selectInfo);
+  modalInfosEvent.handleOpen();
+};
+*/
+
 function DemoApp() {
   return (
-    /*
+    <>
     <div>
       <h1>Teacher Schedule</h1>
-      <FullCalendar
-        plugins={[dayGridPlugin]}
-        initialView='dayGridMonth'
-        weekends={false}
-        events={events}
-        eventContent={renderEventContent}
-      />
     </div>
-    */
-  
       <FullCalendar
         plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
+        weekends={false}
+        events={events}
+        eventContent={renderEventContent}
         headerToolbar={{
           left: "prev,next today",
           center: "title",
@@ -52,7 +55,8 @@ function DemoApp() {
           list: "Lista",
         }}
       />
-    );
+    </>
+  );
 }
 
 // a custom render function
