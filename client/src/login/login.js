@@ -3,7 +3,7 @@ import './login.css';
 
 function IniciarSesion() {
 
-	const serverUrl = 'http://localhost:3000/api/teachers'
+	const serverUrl = 'http://localhost:3000/api/auth'
 
 	var User = document.getElementById("user").value
 	var Password = document.getElementById("password").value
@@ -19,7 +19,7 @@ function IniciarSesion() {
     };
 
   	const fetchApi = async () => {
-		return await fetch(serverUrl)
+		return await fetch(serverUrl,credenciales)
   	}
 
 	Resultado.textContent = (fetchApi()) //agregar resultado en caso de no iniciar sesión.
