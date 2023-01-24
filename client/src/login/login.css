@@ -1,23 +1,37 @@
 #content-1 {
 	display: flex;
 	flex-direction: column;
-	background-color: aqua;
-	border-radius: 50px;
-	align-self: center;
+	padding: 4%;
+	text-align: center;
 	align-items: center;
-	margin-left: 35%;
-	margin-right: 35%;
-	margin-top: 10%;
-	gap: 20%;
+	background-color: #03F7FF;
+	border-color: #111ED9;
+	border-style: groove;
+	border-radius: 50px;
+	margin: 5% 35%;
+	row-gap: 38px;
+}
+
+h2 {
+	border-color: black;
+	border-style: groove;
 }
 
 #log-in {
 	border-radius: 10px;
+	height: 30px;
+	width: 100px;
 }
 
 .inputs {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	column-gap: 20px;
 	height: 30px;
+}
+
+.labels {
+	width: 100px;
+	text-align: start;
 }
