@@ -10,8 +10,9 @@ function IniciarSesion() {
 	var Resultado = document.getElementById("resultado")
 
 	var credenciales = {
-		mode: 'no-cors',
+		mode: 'cors',
 		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
 			user: User,
 			password: Password
@@ -19,7 +20,8 @@ function IniciarSesion() {
     };
 
   	const fetchApi = async () => {
-		return await fetch(serverUrl,credenciales)
+		var response = await fetch(serverUrl,credenciales)
+		return response.statusText
   	}
 
 	Resultado.textContent = (fetchApi()) //agregar resultado en caso de no iniciar sesión.

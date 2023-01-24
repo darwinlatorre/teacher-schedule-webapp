@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import morgan from 'morgan';
 
 import TeacherRouter from './routes/teacherRoutes.js';
@@ -24,6 +25,22 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}));
 // Built-in for json
 app.use(express.json())
+// config to cors
+const corsOpts = {
+  origin: '*',
+
+  methods: [
+    'GET',
+    'POST',
+	'UPDATE,'
+  ],
+
+  allowedHeaders: [
+    'Content-Type',
+  ],
+};
+
+app.use(cors(corsOpts));
 
 
 
