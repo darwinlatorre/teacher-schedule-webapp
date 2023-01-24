@@ -2,18 +2,32 @@ import './login.css';
 
 
 function IniciarSesion() {
-	
+
+	const serverUrl = 'http://localhost:3000/api/teachers'
+
 	var User = document.getElementById("user").value
 	var Password = document.getElementById("password").value
 	var Resultado = document.getElementById("resultado")
 
-	//metodo de inicio de sesión
+	var credenciales = {
+		mode: 'no-cors',
+		method: 'POST',
+        body: JSON.stringify({
+			user: User,
+			password: Password
+		})
+    };
 
-	Resultado.textContent = (User+" Y "+Password) //agregar resultado en caso de no iniciar sesión.
+  	const fetchApi = async () => {
+		return await fetch(serverUrl)
+  	}
+
+	Resultado.textContent = (fetchApi()) //agregar resultado en caso de no iniciar sesión.
 }
 
 
 function Login() {
+
 
   return (
     <div id="content-1">
