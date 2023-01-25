@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import bcrypt from 'bcryptjs';
 
 const teacherSchema = new Schema({
     idDocente:{
@@ -54,14 +53,5 @@ const teacherSchema = new Schema({
 }, {
     timestamps: true
 })
-
-teacherSchema.method.encrypPassword = async password => {
-    const salt = await bcrypt.genSalt(10);
-    return await bcrypt.hash(password, salt);
-};
-
-teacherSchema.method.matchPassword = async function(password) {
-    return await bcrypt.compare(password, this.password);
-}
 
 export default model('teachers', teacherSchema);

@@ -46,8 +46,9 @@ const createNewTeacher = async (req, res) => {
     }
     
     try {
+        newTeacher.password = await teacherService.encrypPassword(body.password);
         const createdTeacher = await teacherService.createNewTeacher(newTeacher);
-        res.status(201).send({status: "OK", data: createdTeacher});
+        res.status(201).send({status: "OK", data: 'new teacher '+ createdTeacher.nombres + ' created!'});
     } catch (error) {
         res
             .status(error?.status || 500)
@@ -102,6 +103,7 @@ const updateTeacher = async (req, res) => {
     };
 
     try {
+        newTeacher.password = await teacherService.encrypPassword(body.password);
         const updatedTeacher = await teacherService.updateTeacher(teacherID, newTeacher);
         res.send({status: 'OK', data: updatedTeacher });
     } catch (error) {

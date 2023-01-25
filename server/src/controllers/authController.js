@@ -1,24 +1,46 @@
 import coordinatorService from "../services/coordinatorService.js";
+import teacherService from "../services/teacherService.js";
+
+const handleCoordinatorLogin = async(usuario, contraseña) => {
+    try {
+        const foundUserCoordinator = await coordinatorService.checkUser(usuario)
+        if ( foundUserCoordinator.user !== usuario) {
+            return false;
+        }
+        if (await coordinatorService.matchPassword(contraseña, foundUserCoordinator.password)) {
+            return true;
+        }
+        return false;
+    } catch (error) {
+        return false;
+    }
+}
+
+const handleTeacherLogin = async(usuario, contraseña) => {
+    try {
+        const foundUserTeacher = await teacherService.checkUser(usuario)
+        if ( foundUserTeacher.user !== usuario) {
+            return false;
+        }
+        if (await teacherService.matchPassword(contraseña, foundUserTeacher.password)) {
+            return true;
+        }
+        return false;
+    } catch (error) {
+        return false;
+    }
+
+}
 
 const handleLogin = async(req, res) => {
     const { body } = req;
-
     if (!body.user || !body.password) {
         return res.status(400).send({status: "FAILED", data: 'Usuario o contraseña son requeridos.'});
     }
-
-    const foundUser = await coordinatorService.checkUser(body.user)
-
-    if (foundUser.user !== body.user) {
-        return res.status(401).send({status: "UNAUTHORIZED"})
+    if (await handleCoordinatorLogin(body.user, body.password) || await handleTeacherLogin(body.user, body.password)){
+        return res.status(200).send({status: "SUCCESS", data: 'Usuario ' + body.user + ' is logged in!'})
     }
-    const matchPassword = await coordinatorService.matchPassword(body.password, foundUser.password)
-    if (matchPassword) {
-        return res.status(200).send({status: "SUCCESS", data: 'Usuario ' + foundUser.user + ' is logged in!'})
-    }
-    else{
-        res.status(401).send({status: 'UNAUTHORIZED'})
-    }
+    return res.status(401).send({status: "UNAUTHORIZED"})
 }
 
 export default {handleLogin};

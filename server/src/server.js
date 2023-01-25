@@ -17,6 +17,21 @@ const app = express();
 
 // Settings
 app.set('port', process.env.PORT || 3000);
+//Corps setting
+const corsOpts = {
+  origin: '*',
+
+  methods: [
+    'GET',
+    'POST',
+	  'UPDATE',
+    'DELETE'
+  ],
+
+  allowedHeaders: 'Content-Type',
+  optionsSuccessStatus: 200
+};
+
 
 // Middlewares
 // To se some requiest made to the server
@@ -25,23 +40,13 @@ app.use(morgan('dev'))
 app.use(express.urlencoded({extended: false}));
 // Built-in for json
 app.use(express.json())
-// config to cors
-const corsOpts = {
-  origin: '*',
-
-  methods: [
-    'GET',
-    'POST',
-	'UPDATE,'
-  ],
-
-  allowedHeaders: [
-    'Content-Type',
-  ],
-};
-
+// CORS: Cross Origin Resource Sharing
 app.use(cors(corsOpts));
-
+//Error habler
+app.use(function(err, req, res, nex) {
+  console.error(err.stack)
+  res.status(500).send(err.message);
+})
 
 
 // Global variables
@@ -62,5 +67,7 @@ app.use('/api/auth', AuthController);
 
 //Convierte esta carpeta en publica
 app.use(express.static('./public'));
+
+
 
 export default app;

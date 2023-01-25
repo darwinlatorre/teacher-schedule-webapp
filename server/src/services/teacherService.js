@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import bcrypt from 'bcryptjs';
+
 import teacher from '../models/teacherModel.js';
 
 const getAllTeachers = async () => {
@@ -39,6 +41,19 @@ const removeClassToTeacher = async (classID, teacherID) => {
     await teacher.updateOne({'_id': mongoose.Types.ObjectId(teacherID)}, { $pull: {listIdClasses: mongoose.Types.ObjectId(classID)}});
 }
 
+const encrypPassword = async (password) => {
+    const salt = await bcrypt.genSalt(10);
+    return await bcrypt.hash(password, salt);
+};
+
+const matchPassword = async function(incomePassword, password) {
+    return await bcrypt.compare(incomePassword, password);
+}
+
+const checkUser = async (userName) => {
+    return await teacher.findOne({'user': userName});
+}
+
 export default {getAllTeachers,
     getOneTeacher,
     createNewTeacher,
@@ -46,5 +61,8 @@ export default {getAllTeachers,
     updatedTeacherCondition,
     deleteTeacher,
     addClassToTeacher,
-    removeClassToTeacher
+    removeClassToTeacher,
+    encrypPassword,
+    matchPassword,
+    checkUser
 };
