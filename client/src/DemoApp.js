@@ -8,20 +8,12 @@ const events = [
   { title: 'Meeting', start: new Date() }
 ]
 
-/*
-const handleAddEventSelectAndOpenModal = (selectInfo: any) => {
-  setIsEditCard(false);
-  setEventInfos(selectInfo);
-  modalInfosEvent.handleOpen();
-};
-*/
-
 function DemoApp() {
   return (
     <>
-    <div>
-      <h1>Teacher Schedule</h1>
-    </div>
+      <div>
+        <h1>Teacher Schedule</h1>
+      </div>
       <FullCalendar
         plugins={[timeGridPlugin, dayGridPlugin, interactionPlugin]}
         initialView="timeGridWeek"
@@ -32,6 +24,10 @@ function DemoApp() {
           left: "prev,next today",
           center: "title",
           right: "dayGridMonth,timeGridWeek,timeGridDay",
+        }}
+        dateClick={function(info){
+          console.log(info);
+          //document.getElementsById('start').value
         }}
         locale="es-co"
         //weekends={weekends.weekendsVisible}
