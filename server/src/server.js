@@ -61,6 +61,16 @@ app.use('/api/competencias', CompetenciaRoutes);
 app.use('/api/classes', ClassesRoutes);
 app.use('/api/coordinator', CoordinatorRoutes);
 app.use('/api/auth', AuthController);
+app.all('*', (req, res) => {
+    res.status(404);
+    if(req.accepts('html')){
+        res.json({ error: "404 Not Found" });
+    } else if(req.accepts('json')){
+        res.json({ error: "404 Not Found" });
+    } else {
+        res.type('txt').send("404 Not Found");
+    }
+});
 
 // Static files
 
