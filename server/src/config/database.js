@@ -1,6 +1,6 @@
 //Carga las variables de entorno para obtener una seguridad evitando que el codigo sensible sea publicors
-import * as dotenv from 'dotenv'
-dotenv.config()
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 import mongoose from "mongoose";
 const MONGODB_URL = process.env.MONGODB_URL;

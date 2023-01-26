@@ -16,6 +16,9 @@ const getOneTeacher = async (req, res) => {
 const createNewTeacher = async (req, res) => {
     const { body } = req;
 
+    const duplicate = await teacherService.checkUser(body.user);
+    if(duplicate) return res.sendStatus(409); //Conflict
+
     if(body.tipoDocente !== "Tecnico" && 
         body.tipoDocente !== "Profesional" || 
         body.tipoContrato !== "Planta" && 
@@ -39,11 +42,9 @@ const createNewTeacher = async (req, res) => {
         tipoDocente: body.tipoDocente, 
         tipoContrato: body.tipoContrato, 
         area: body.area, 
-        listIdClasses: [],
-        assgHorariaSemanal: 0, 
-        horasMaxDia: 0, 
-        estado: 'activo'
     }
+
+    console.log(newTeacher);
     
     try {
         newTeacher.password = await teacherService.encrypPassword(body.password);
@@ -96,9 +97,6 @@ const updateTeacher = async (req, res) => {
         tipoDocente: body.tipoDocente, 
         tipoContrato: body.tipoContrato, 
         area: body.area, 
-        listIdClasses: body.listIdClasses, 
-        assgHorariaSemanal: body.assgHorariaSemanal, 
-        horasMaxDia: body.horasMaxDia, 
         estado: body.estado
     };
 
@@ -142,12 +140,11 @@ export const removeClassToTeacher = async (classID, teacherID) => {
     return await teacherService.removeClassToTeacher(classID, teacherID);
 }
 
+
 export default {
     getAllTeachers,
     getOneTeacher,
     createNewTeacher,
     updateTeacher,
-    deleteTeacher,
-    addClassToTeacher,
-    removeClassToTeacher
+    deleteTeacher
 };

@@ -46,9 +46,6 @@ const encrypPassword = async (password) => {
     return await bcrypt.hash(password, salt);
 };
 
-const matchPassword = async function(incomePassword, password) {
-    return await bcrypt.compare(incomePassword, password);
-}
 
 const checkUser = async (userName) => {
     return await teacher.findOne({'user': userName});
@@ -63,6 +60,5 @@ export default {getAllTeachers,
     addClassToTeacher,
     removeClassToTeacher,
     encrypPassword,
-    matchPassword,
     checkUser
 };

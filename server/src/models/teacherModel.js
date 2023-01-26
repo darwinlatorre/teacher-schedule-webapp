@@ -25,6 +25,15 @@ const teacherSchema = new Schema({
         type: String,
         require: true
     },
+    roles:{
+        user: {
+            type: Number,
+            default: 4000
+        },
+        coodinator: Number
+        
+    },
+    refreshToken: [String],
     tipoDocente:{
         type: String,
         require: true
@@ -39,16 +48,20 @@ const teacherSchema = new Schema({
     },
     listIdClasses:{
         type: Array,
+        default: [],
         require: true
     },
     assgHorariaSemanal:{
         type: Number,
+        default: 0
     },
     horasMaxDia:{
         type: Number,
+        default: 0
     },
     estado:{
         type: String,
+        default: 'Activo'
     },
 }, {
     timestamps: true

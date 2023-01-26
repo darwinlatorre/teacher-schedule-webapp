@@ -37,13 +37,10 @@ const encrypPassword = async (password) => {
     return await bcrypt.hash(password, salt);
 };
 
-const matchPassword = async function(incomePassword, password) {
-    return await bcrypt.compare(incomePassword, password);
-}
-
 const checkUser = async (userName) => {
     return await coordinator.findOne({'user': userName});
 }
+
 
 export default {getAllCoordinators,
     getOneCoordinatorByID,
@@ -52,6 +49,5 @@ export default {getAllCoordinators,
     updatedCoordinatorCondition,
     deleteCoordinator,
     encrypPassword,
-    matchPassword,
-    checkUser
+    checkUser,
 };
