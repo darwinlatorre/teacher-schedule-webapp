@@ -1,0 +1,62 @@
+[
+    {
+        "idDocente": 1234567890,
+        "nombres": "Juan",
+        "apellidos": "Pérez",
+        "tipoIdentificacion": "Cédula",
+        "user": "juanperez",
+        "password": "password123",
+        "tipoDocente": "Tecnico",
+        "tipoContrato": "Planta",
+        "area": "Matemáticas",
+        "estado": "Activo"
+    },
+    {
+        "idDocente": 9876543210,
+        "nombres": "Maria",
+        "apellidos": "García",
+        "tipoIdentificacion": "Pasaporte",
+        "user": "mariagarcia",
+        "password": "password456",
+        "tipoDocente": "Tecnico",
+        "tipoContrato": "Planta",
+        "area": "Física",
+        "estado": "Activo"
+    },
+    {
+        "idDocente": 1010101010,
+        "nombres": "Pedro",
+        "apellidos": "Martínez",
+        "tipoIdentificacion": "Cédula",
+        "user": "pedromartinez",
+        "password": "password789",
+        "tipoDocente": "Profesional",
+        "tipoContrato": "Contratista",
+        "area": "Inglés",
+        "estado": "Activo"
+    },
+    {
+        "idDocente": 202020202,
+        "nombres": "Sofia",
+        "apellidos": "Rodriguez",
+        "tipoIdentificacion": "Cédula",
+        "user": "sofiarodriguez",
+        "password": "password111",
+        "tipoDocente": "Profesional",
+        "tipoContrato": "Contratista",
+        "area": "Español",
+        "estado": "Activo"
+    },
+    {
+        "idDocente": 303030303,
+        "nombres": "Pablo",
+        "apellidos": "Lopez",
+        "tipoIdentificacion": "Cédula",
+        "user": "pablolopez",
+        "password": "password222",
+        "tipoDocente": "Profesional",
+        "tipoContrato": "Contratista",
+        "area": "Química",
+        "estado": "Activo"
+    }
+]

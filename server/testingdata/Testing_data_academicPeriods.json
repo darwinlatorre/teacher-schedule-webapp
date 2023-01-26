@@ -1,0 +1,37 @@
+[
+  {
+    "idPeriodoAcademico": "PA001",
+    "nombre": "Primer semestre",
+    "duracion": "3 meses",
+    "fechaInicio": "2022-01-01",
+    "fechaFinal": "2022-03-31"
+  },
+  {
+    "idPeriodoAcademico": "PA002",
+    "nombre": "Segundo semestre",
+    "duracion": "6 meses",
+    "fechaInicio": "2022-04-01",
+    "fechaFinal": "2022-09-30"
+  },
+  {
+    "idPeriodoAcademico": "PA003",
+    "nombre": "Tercer semestre",
+    "duracion": "3 meses",
+    "fechaInicio": "2022-10-01",
+    "fechaFinal": "2022-12-31"
+  },
+  {
+    "idPeriodoAcademico": "PA004",
+    "nombre": "Cuarto semestre",
+    "duracion": "3 meses",
+    "fechaInicio": "2023-01-01",
+    "fechaFinal": "2023-03-31"
+  },
+  {
+    "idPeriodoAcademico": "PA005",
+    "nombre": "Quinto semestre",
+    "duracion": "3 meses",
+    "fechaInicio": "2023-04-01",
+    "fechaFinal": "2023-06-30"
+  }
+]

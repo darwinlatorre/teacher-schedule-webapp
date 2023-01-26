@@ -54,13 +54,14 @@ app.use(cookieParser());
 // Global variables
 
 // Routes
-app.use('/auth', AuthRoutes);
-app.use('/refresh', RefreshTokenRoutes);
-app.use('/logout', LogOutRoutes)
-app.use('/api/coordinator', CoordinatorRoutes);
-app.use('/api/teachers', TeacherRouter);
+app.use('/api/auth', AuthRoutes);
+app.use('/api/refresh', RefreshTokenRoutes);
+app.use('/api/logout', LogOutRoutes)
+
 
 app.use(verifyJWT);
+app.use('/api/coordinator', CoordinatorRoutes);
+app.use('/api/teachers', TeacherRouter);
 app.use('/api/enviroments', EnviromentRoute);
 app.use('/api/academicPeriods', AcademicPeriodRoutes);
 app.use('/api/programs', ProgramRoutes);

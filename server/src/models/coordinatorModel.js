@@ -33,6 +33,10 @@ const coordinatorSchema = new Schema({
         coodinator: {
             type: Number,
             default: 5000
+        },
+        admin: {
+            type: Number,
+            default: 0
         }
     },
     refreshToken: String
