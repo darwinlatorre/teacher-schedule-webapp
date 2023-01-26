@@ -91,13 +91,7 @@ const deleteCoordinator = (req, res) => {
 
 };
 
-export const checkCoordinatorToken = async (token) => {
-    return coordinatorService.checkToken(token);
-}
 
-export const updateCoordinatorToken = async (coodinator) => {
-    return await coordinatorService.updateCoordinatorToken(coordinator);
-}
 
 export default {
     getAllCoordinators,

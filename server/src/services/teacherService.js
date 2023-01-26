@@ -46,20 +46,9 @@ const encrypPassword = async (password) => {
     return await bcrypt.hash(password, salt);
 };
 
-const matchPassword = async function(incomePassword, password) {
-    return await bcrypt.compare(incomePassword, password);
-}
 
 const checkUser = async (userName) => {
     return await teacher.findOne({'user': userName});
-}
-
-const checkToken = async (token) => {
-    return await teacher.findOne({'refreshToken': token})
-}
-
-const updateTeacherToken = async (teacher) => {
-    return await teacher.findById(teacher._id, {token: teacher.token})
 }
 
 export default {getAllTeachers,
@@ -71,8 +60,5 @@ export default {getAllTeachers,
     addClassToTeacher,
     removeClassToTeacher,
     encrypPassword,
-    matchPassword,
-    checkUser,
-    checkToken,
-    updateTeacherToken
+    checkUser
 };

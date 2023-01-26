@@ -144,13 +144,6 @@ export const removeClassToTeacher = async (classID, teacherID) => {
     return await teacherService.removeClassToTeacher(classID, teacherID);
 }
 
-export const checkTeacherToken = async (token) => {
-    return await teacherService.checkToken(token);
-}
-
-export const updateTeacherToken = async (teacher) => {
-    return await teacherService.updateTeacherToken(teacher);
-}
 
 export default {
     getAllTeachers,
