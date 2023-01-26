@@ -5,6 +5,7 @@ let sesion;
 
 function App() {
   return (
+    //window.location.replace('http://localhost/teacher-schedule-webapp/client/src/'),
     <div id="App">
       <Routes />
     </div>
