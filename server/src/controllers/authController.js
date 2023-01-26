@@ -40,7 +40,7 @@ const handleLogin = async(req, res) => {
     if (await handleCoordinatorLogin(body.user, body.password) || await handleTeacherLogin(body.user, body.password)){
         return res.status(200).send({status: "SUCCESS", data: 'Usuario ' + body.user + ' is logged in!'})
     }
-    return res.status(401).send({status: "UNAUTHORIZED"})
+    return res.status(401).send({status: "UNAUTHORIZED", data: 'Usuario o contraseña incorrectos.'})
 }
 
 export default {handleLogin};
