@@ -34,6 +34,22 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-floating mb-3">
+                                    <input type="hidden" id="ambiente" name="ambiente">
+                                    <input id="ambiente" type="text" class="form-control" name="ambiente">
+                                    <label for="ambiente">Ambiente</label>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
+                                    <input type="hidden" id="profesor" name="profesor">
+                                    <input id="profesor" type="text" class="form-control" name="profesor">
+                                    <label for="profesor">Profesor</label>
+                                </div>
+
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-floating mb-3">
                                     <input class="form-control" id="start" type="date" name="start">
                                     <label for="" class="form-label">Fecha</label>
                                 </div>
