@@ -39,13 +39,22 @@ const handleLogin = async(req, res) => {
             // Savin refresh token with current user
             
             foundCoodinator.refreshToken = refreshToken;
-            const result = await foundCoodinator.save();
-            console.log(result);
+            await foundCoodinator.save();
+
+            const dataCoordinator = {
+                _id: foundCoodinator._id, 
+                idCoordinador: foundCoodinator.idCoordinador, 
+                nombres: foundCoodinator.nombres, 
+                apellidos: foundCoodinator.apellidos, 
+                tipoIdentificacion: foundCoodinator.tipoIdentificacion, 
+                user: foundCoodinator.user, 
+                roles: foundCoodinator.roles
+            }
 
             //TEMP SOLUCION FOR TESTING
             /* res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 30 * 60 * 1000 }); */
             res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 30 * 60 * 1000 });
-            return res.send(accessToken);
+            return res.send({auth: true, token: accessToken, dataUser: dataCoordinator});
         }
         return res.sendStatus(401)
     }
@@ -73,13 +82,26 @@ const handleLogin = async(req, res) => {
             );
             // Savin refresh token with current user
             foundTeacher.refreshToken = refreshToken;
-            const result = await foundTeacher.save();
-            console.log(result);
+            await foundTeacher.save();
+
+            const dataTeacher = {
+                _id: foundTeacher._id, 
+                idCoordinador: foundTeacher.idDocente, 
+                nombres: foundTeacher.nombres, 
+                apellidos: foundTeacher.apellidos, 
+                tipoIdentificacion: foundTeacher.tipoIdentificacion, 
+                user: foundTeacher.user, 
+                tipoDocente: foundTeacher.tipoDocente,
+                tipoContrato: foundTeacher.tipoContrato,
+                area: foundTeacher.area,
+                estado: foundTeacher.estado,
+                roles: foundTeacher.roles
+            }
 
             //TEMP SOLUCION FOR TESTING
             /* res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 30 * 60 * 1000 }); */
             res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', maxAge: 30 * 60 * 1000 });
-            return res.send(accessToken);
+            return res.send({auth: true, token: accessToken, dataUser: dataTeacher});
         }
         return res.sendStatus(401)
     }

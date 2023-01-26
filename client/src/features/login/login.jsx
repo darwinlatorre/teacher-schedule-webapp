@@ -1,36 +1,22 @@
 import "./login.css";
+import Axios from "axios";
 //import { useHistory } from "react-router-dom";
 
 function IniciarSesion() {
-  const serverUrl = "http://localhost:3000/auth";
-  //const { push } = useHistory();
+  const serverUrl = "http://localhost:3000/api/auth";
 
   var User = document.getElementById("user").value;
   var Password = document.getElementById("password").value;
   var Resultado = document.getElementById("resultado");
 
-  var credenciales = {
-    mode: "cors",
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      user: User,
-      password: Password,
-    }),
-  };
-
-  const fetchApi = async () => {
-    const response = await fetch(serverUrl, credenciales);
-    return response.json();
-  };
-
-  var status = fetchApi();
-
-  if (status.status !== "400" && status.status !== "401") {
-  } else {
-    Resultado.textContent = status; //agrega resultado en caso de no iniciar sesión.
-  }
-}
+  Axios.post("http://localhost:3000/api/auth", {
+    user: User,
+    password: Password,
+  }).then((response) => {
+    console.log(response.data);
+  });
+  //Resultado.textContent = status; //agrega resultado en caso de no iniciar sesión.
+};
 
 export default function Login() {
   return (
