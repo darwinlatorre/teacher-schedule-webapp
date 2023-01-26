@@ -4,7 +4,7 @@ import timeGridPlugin from "@fullcalendar/timegrid"
 import interactionPlugin from "@fullcalendar/interaction"
 import React from 'react'
 
-const events = [
+var events = [
   { title: 'Meeting', start: new Date() }
 ]
 
@@ -26,8 +26,17 @@ function DemoApp() {
           right: "dayGridMonth,timeGridWeek,timeGridDay",
         }}
         dateClick={function(info){
+          //events.push({ title: 'Test', start: new Date('2023-01-26T19:30:00') })
+          //alert('Cantidad de eventos: ' + events.length);
+          //events.pop();
+          //alert('Info: ' + info.dateStr);
+          events.push({ title: 'Test', start: info.date})
+          var count = 1
+          events.forEach(event => {
+            alert('Evento ' + count + ': ' + event.title + ', ' + event.start);
+            count++;
+          });
           console.log(info);
-          //document.getElementsById('start').value
         }}
         locale="es-co"
         //weekends={weekends.weekendsVisible}
@@ -63,6 +72,25 @@ function renderEventContent(eventInfo) {
       <i>{eventInfo.event.title}</i>
     </>
   )
+}
+
+class form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    alert('La fecha es: ' + event.Date);
+    event.preventDefault();
+  }
 }
 
 export default DemoApp;
