@@ -45,6 +45,15 @@ const checkUser = async (userName) => {
     return await coordinator.findOne({'user': userName});
 }
 
+const checkToken = async (token) => {
+    return await coordinator.findOne({'refreshToken': token})
+}
+
+const updateCoordinatorToken = async (coordinator) => {
+    return await coordinator.findById(coordinator._id ,{token: coordinator.token})
+}
+
+
 export default {getAllCoordinators,
     getOneCoordinatorByID,
     createNewCoordinator,
@@ -53,5 +62,7 @@ export default {getAllCoordinators,
     deleteCoordinator,
     encrypPassword,
     matchPassword,
-    checkUser
+    checkUser,
+    checkToken,
+    updateCoordinatorToken
 };

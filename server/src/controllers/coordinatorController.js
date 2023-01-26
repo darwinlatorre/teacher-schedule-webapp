@@ -16,6 +16,9 @@ const getOneCoordinator = async (req, res) => {
 const createNewCoordinator = async (req, res) => {
     const { body } = req;
 
+    const duplicate = await coordinatorService.checkUser(body.user);
+    if(duplicate) return res.sendStatus(409); //Conflict
+
     const newCoordinator = { 
         idCoordinador: body.idCoordinador, 
         nombres: body.nombres, 
@@ -23,6 +26,8 @@ const createNewCoordinator = async (req, res) => {
         tipoIdentificacion: body.tipoIdentificacion, 
         user: body.user, 
         password: body.password, 
+        roles: { "user": 4000, "coordinator": 5000},
+        refreshToken: ''
     }
     
     try {
@@ -86,11 +91,18 @@ const deleteCoordinator = (req, res) => {
 
 };
 
+export const checkCoordinatorToken = async (token) => {
+    return coordinatorService.checkToken(token);
+}
+
+export const updateCoordinatorToken = async (coodinator) => {
+    return await coordinatorService.updateCoordinatorToken(coordinator);
+}
 
 export default {
     getAllCoordinators,
     getOneCoordinator,
     createNewCoordinator,
     updateCoordinator,
-    deleteCoordinator,
+    deleteCoordinator
 };

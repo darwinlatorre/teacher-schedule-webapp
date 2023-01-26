@@ -1,5 +1,5 @@
 import app from './server.js';
-import './database.js';
+import './config/database.js';
 
 
 app.listen(app.get('port'), ()=> {

@@ -25,6 +25,15 @@ const teacherSchema = new Schema({
         type: String,
         require: true
     },
+    roles:{
+        user: {
+            type: Number,
+            default: 4000
+        },
+        coodinator: Number
+        
+    },
+    refreshToken: [String],
     tipoDocente:{
         type: String,
         require: true

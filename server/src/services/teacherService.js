@@ -54,6 +54,14 @@ const checkUser = async (userName) => {
     return await teacher.findOne({'user': userName});
 }
 
+const checkToken = async (token) => {
+    return await teacher.findOne({'refreshToken': token})
+}
+
+const updateTeacherToken = async (teacher) => {
+    return await teacher.findById(teacher._id, {token: teacher.token})
+}
+
 export default {getAllTeachers,
     getOneTeacher,
     createNewTeacher,
@@ -64,5 +72,7 @@ export default {getAllTeachers,
     removeClassToTeacher,
     encrypPassword,
     matchPassword,
-    checkUser
+    checkUser,
+    checkToken,
+    updateTeacherToken
 };
