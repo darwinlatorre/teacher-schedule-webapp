@@ -26,8 +26,7 @@ function IniciarSesion() {
 
   var status = fetchApi();
 
-  if (status.status === "SUCCESS") {
-    //push("");
+  if (status.status !== "400" && status.status !== "401") {
   } else {
     Resultado.textContent = status; //agrega resultado en caso de no iniciar sesión.
   }
