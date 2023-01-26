@@ -42,10 +42,6 @@ const createNewTeacher = async (req, res) => {
         tipoDocente: body.tipoDocente, 
         tipoContrato: body.tipoContrato, 
         area: body.area, 
-        listIdClasses: [],
-        assgHorariaSemanal: 0, 
-        horasMaxDia: 0, 
-        estado: 'activo'
     }
 
     console.log(newTeacher);

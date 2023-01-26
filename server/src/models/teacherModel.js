@@ -48,16 +48,20 @@ const teacherSchema = new Schema({
     },
     listIdClasses:{
         type: Array,
+        default: [],
         require: true
     },
     assgHorariaSemanal:{
         type: Number,
+        default: 0
     },
     horasMaxDia:{
         type: Number,
+        default: 0
     },
     estado:{
         type: String,
+        default: 'Activo'
     },
 }, {
     timestamps: true
