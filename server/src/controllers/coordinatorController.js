@@ -26,8 +26,6 @@ const createNewCoordinator = async (req, res) => {
         tipoIdentificacion: body.tipoIdentificacion, 
         user: body.user, 
         password: body.password, 
-        roles: { "user": 4000, "coordinator": 5000},
-        refreshToken: ''
     }
     
     try {
@@ -47,7 +45,6 @@ const createNewCoordinator = async (req, res) => {
 const updateCoordinator = async (req, res) => {
      const { body , 
         params: { coordinatorID },
-        query: { condition },
     } = req; 
 
     
@@ -58,9 +55,11 @@ const updateCoordinator = async (req, res) => {
         tipoIdentificacion: body.tipoIdentificacion, 
         user: body.user, 
         password: body.password, 
+        roles: body.roles
     };
 
     try {
+        newCoordinator.password = await coordinatorService.encrypPassword(body.password)
         const updatedCoordinator = await coordinatorService.updateCoordinator(coordinatorID, newCoordinator);
         res.send({status: 'OK', data: updatedCoordinator });
     } catch (error) {

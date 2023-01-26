@@ -1,0 +1,52 @@
+[
+  {
+    "idHorario": "63ce22ec0d6ba32363550045",
+    "idCompetencia": "Matematicas",
+    "idUsuario": "63ce40c4b1cf21291d9d8eab",
+    "idAmbiente": "Aula 101",
+    "horas": 2,
+    "dia": "Lunes",
+    "horaInicio": "14:00:00",
+    "horaFinal": "16:00:00"
+  },
+  {
+    "idHorario": "63ce22ec0d6ba32363550045",
+    "idCompetencia": "Fisica",
+    "idUsuario": "63ce40c4b1cf21291d9d8eab",
+    "idAmbiente": "Aula 102",
+    "horas": 2,
+    "dia": "Martes",
+    "horaInicio": "10:00:00",
+    "horaFinal": "12:00:00"
+  },
+  {
+    "idHorario": "63ce22ec0d6ba32363550045",
+    "idCompetencia": "Quimica",
+    "idUsuario": "63ce40c4b1cf21291d9d8eab",
+    "idAmbiente": "Aula 103",
+    "horas": 3,
+    "dia": "Miercoles",
+    "horaInicio": "08:00:00",
+    "horaFinal": "11:00:00"
+  },
+  {
+    "idHorario": "63ce22ec0d6ba32363550045",
+    "idCompetencia": "Literatura",
+    "idUsuario": "profesor321",
+    "idAmbiente": "Aula 104",
+    "horas": 2,
+    "dia": "Jueves",
+    "horaInicio": "09:00:00",
+    "horaFinal": "11:00:00"
+  },
+  {
+    "idHorario": "63ce22ec0d6ba32363550045",
+    "idCompetencia": "Historia",
+    "idUsuario": "profesor654",
+    "idAmbiente": "Aula 105",
+    "horas": 2,
+    "dia": "Viernes",
+    "horaInicio": "14:00:00",
+    "horaFinal": "16:00:00"
+  }
+]

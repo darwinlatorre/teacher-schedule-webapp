@@ -18,7 +18,7 @@ export default function Routes() {
 
   var sesion = {
     user: "",
-    role: "coordinator",
+    role: "default",
   };
 
   var role = sesion.role;

@@ -28,13 +28,13 @@ const handleLogin = async(req, res) => {
                 },
                 process.env.ACCESS_TOKEN_SECRET,
                 { 
-                    expiresIn: '30s'
+                    expiresIn: '30m'
                 }
             );
             const refreshToken = jwt.sign(
                 { "user": foundCoodinator.user },
                 process.env.REFRESH_TOKEN_SECRET,
-                { expiresIn: '30m'}
+                { expiresIn: '1h'}
             );
             // Savin refresh token with current user
             

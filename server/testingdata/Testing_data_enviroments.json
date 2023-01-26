@@ -1,0 +1,41 @@
+[
+  {
+    "idAmbiente": "AA001",
+    "nombre": "Sala de clases 1",
+    "tipo": "Presencial",
+    "capacidad_estudiantes": 50,
+    "ubicacion": "Edificio A",
+    "estado" : "Activo"
+  },
+  {
+    "idAmbiente": "AA002",
+    "nombre": "Sala de clases 2",
+    "tipo": "Presencial",
+    "capacidad_estudiantes": 30,
+    "ubicacion": "Edificio B",
+    "estado" : "Activo"
+  },
+  {
+    "idAmbiente": "AA003",
+    "nombre": "Sala de clases virtual",
+    "tipo": "Virtual",
+    "capacidad_estudiantes": "ilimitado",
+    "ubicacion": "En línea"
+  },
+  {
+    "idAmbiente": "AA004",
+    "nombre": "Sala de conferencias",
+    "tipo": "Presencial",
+    "capacidad_estudiantes": 100,
+    "ubicacion": "Edificio C",
+    "estado" : "Activo"
+  },
+  {
+    "idAmbiente": "AA005",
+    "nombre": "Laboratorio de informática",
+    "tipo": "Presencial",
+    "capacidad_estudiantes": 40,
+    "ubicacion": "Edificio D",
+    "estado" : "Activo"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "idPrograma": 1,
+    "nombrePrograma": "Ingeniería de Software"
+  },
+  {
+    "idPrograma": 2,
+    "nombrePrograma": "Ingeniería en Sistemas"
+  },
+  {
+    "idPrograma": 3,
+    "nombrePrograma": "Diseño Gráfico"
+  },
+  {
+    "idPrograma": 4,
+    "nombrePrograma": "Economía"
+  },
+  {
+    "idPrograma": 5,
+    "nombrePrograma": "Psicología"
+  }
+]

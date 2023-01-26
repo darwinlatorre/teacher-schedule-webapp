@@ -1,0 +1,27 @@
+[
+  {
+    "idCompetencia": "C001",
+    "tipo": "Generica",
+    "nombre": "Comunicación efectiva"
+  },
+  {
+    "idCompetencia": "C002",
+    "tipo": "Específica",
+    "nombre": "Programación en C++"
+  },
+  {
+    "idCompetencia": "C003",
+    "tipo": "Específica",
+    "nombre": "Diseño de interfaces de usuario"
+  },
+  {
+    "idCompetencia": "C004",
+    "tipo": "Generica",
+    "nombre": "Trabajo en equipo"
+  },
+  {
+    "idCompetencia": "C005",
+    "tipo": "Específica",
+    "nombre": "Análisis estadístico"
+  }
+]
