@@ -1,7 +1,7 @@
 import HomePage from "../features/coordinator/home.jsx";
 import EnviromentHomePage from "../features/coordinator/enviromentManagment/enviromentHome.jsx";
 import PeriodHomePage from "../features/coordinator/periodManagment/periodHome.jsx";
-import ScheduleHomePage from "../features/coordinator/scheduleManagment/scheduleHome.jsx";
+import ClassHomePage from "../features/coordinator/classManagment/classHome.jsx";
 import TeacherHomePage from "../features/coordinator/teacherManagment/teacherHome.jsx";
 
 /**
@@ -21,8 +21,8 @@ export const coordinatorRoutes = [
     element: <PeriodHomePage />,
   },
   {
-    path: "/coordinator/schedule/home",
-    element: <ScheduleHomePage />,
+    path: "/coordinator/class/home",
+    element: <ClassHomePage />,
   },
   {
     path: "/coordinator/teacher/home",

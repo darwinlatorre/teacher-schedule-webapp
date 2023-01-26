@@ -14,6 +14,7 @@
 	display: grid;
 	background-color: #282c34;
 	gap: 30%;
+	max-height: max-content;
 }
 
 #home-tittle {
@@ -46,4 +47,18 @@
 	width: 20%;
 	height: 60px;
 	background-color: red;
+}
+
+/* EditForm component */
+#list {
+	display: flex;
+	flex-direction: column;
+	background-color: darkgray;
+	justify-self: center;
+	justify-content: space-between;
+}
+
+.list-item {
+	height: 30px;
+	width: 100px;
 }
