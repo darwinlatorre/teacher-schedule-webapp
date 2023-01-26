@@ -8,12 +8,15 @@ const router = express.Router();
 
 router.route('/')
     .get(teacherController.getAllTeachers)
-    .post(verifyRoles(ROLES_LIST.coordinato), teacherController.createNewTeacher);
+    .post(teacherController.createNewTeacher);
+    //.post(verifyRoles(ROLES_LIST.coordinato), teacherController.createNewTeacher);
     
 // Use ?condition = Activate||Inactivate if at the update route to modify the status atribute
 router.route('/:teacherID') 
     .get(teacherController.getOneTeacher)
-    .patch(verifyRoles(ROLES_LIST.coordinato), teacherController.updateTeacher)
-    .delete(verifyRoles(ROLES_LIST.coordinato), teacherController.deleteTeacher);
+    .patch(teacherController.updateTeacher)
+    .delete(teacherController.deleteTeacher);
+    /* .patch(verifyRoles(ROLES_LIST.coordinato), teacherController.updateTeacher)
+    .delete(verifyRoles(ROLES_LIST.coordinato), teacherController.deleteTeacher); */
 
 export default router;

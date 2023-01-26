@@ -9,7 +9,7 @@ const getOneCoordinator = async (req, res) => {
     const {
         params: { coordinatorID },
         } = req;
-    const coordinator = await coordinatorService.getOneCoordinator(coordinatorID);
+    const coordinator = await coordinatorService.getOneCoordinatorByID(coordinatorID);
     res.send({status: 'OK', data: coordinator });
 };
 
