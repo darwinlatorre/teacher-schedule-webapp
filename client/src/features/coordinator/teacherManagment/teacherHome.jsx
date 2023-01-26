@@ -3,17 +3,22 @@ import ListSearch from "../../../shared/components/ListSearch.jsx";
 import React from "react";
 
 function obtenerProfesores() {
-  var state = {
-    objects: [],
-  };
-
-  fetch("/api/teachers")
+  let state = fetch("/api/teachers")
     .then((response) => response.json())
     .then((data) => {
-      state = JSON.stringify({ objects: data });
+      return data.data;
     });
 
-  return state.objects;
+  let teachers = [];
+
+  state.then((data) => {
+    var i = 0;
+    for (i in data) {
+      teachers.push(data[i]);
+    }
+  });
+
+  return teachers;
 }
 
 function teacherHome() {
@@ -23,9 +28,7 @@ function teacherHome() {
         <h1>Gestion de docentes</h1>
       </div>
       <div id="button-home-section">
-        <button className="option-button">Registrar Docente</button>
-        <button className="option-button">Editar Docente</button>
-        <button className="option-button">Consultar Docente</button>
+        <button>Registrar Docente</button>
       </div>
       <ListSearch data={obtenerProfesores()} />
       <div id="log-off-home">

@@ -50,15 +50,27 @@
 }
 
 /* EditForm component */
+#list-search {
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	width: 500px;
+}
+
 #list {
 	display: flex;
 	flex-direction: column;
 	background-color: darkgray;
 	justify-self: center;
 	justify-content: space-between;
+	max-height: 150px;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
 }
 
 .list-item {
-	height: 30px;
-	width: 100px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	text-align: center;
 }

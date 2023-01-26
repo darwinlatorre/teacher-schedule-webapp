@@ -2,7 +2,7 @@ import "./login.css";
 //import { useHistory } from "react-router-dom";
 
 function IniciarSesion() {
-  const serverUrl = "http://localhost:3000/api/auth";
+  const serverUrl = "http://localhost:3000/auth";
   //const { push } = useHistory();
 
   var User = document.getElementById("user").value;

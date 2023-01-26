@@ -5,16 +5,18 @@ function ListSearch({ data }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState(data);
 
+  console.log(data);
+
   useEffect(() => {
     setFilteredData(
       data.filter((item) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        item.nombres.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
   }, [searchTerm, data]);
 
   return (
-    <div id="list">
+    <div id="list-search">
       <input
         id="search-bar"
         type="text"
@@ -22,14 +24,17 @@ function ListSearch({ data }) {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      {filteredData.map((item) => (
-        <div className="list-item" key={item.idDocente}>
-          <h2>{item.idDocente}</h2>
-          <p>
-            {item.nombres} {item.apellidos}
-          </p>
-        </div>
-      ))}
+      <div id="list">
+        {filteredData.map((data) => (
+          <div className="list-item" key={data.idDocente}>
+            <h2>{data.idDocente}</h2>
+            <p>
+              {data.nombres} {data.apellidos}
+            </p>
+            <button>Editar</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
