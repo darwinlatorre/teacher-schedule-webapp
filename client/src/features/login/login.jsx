@@ -16,6 +16,9 @@ function IniciarSesion() {
     console.log(response.data);
   });
   //Resultado.textContent = status; //agrega resultado en caso de no iniciar sesión.
+  
+  //Redireccionando al calendario (XAMPP)
+  window.location.assign('http://localhost/teacher-schedule-webapp/client/src/');
 };
 
 export default function Login() {
